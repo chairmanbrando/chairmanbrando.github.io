@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What's on the radar?</title>
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+    <link rel="icon" href="https://www.wunderground.com/static/i/c/v4/30.svg">
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <style>
+        body {
+            background: rgb(50, 48, 47);
+            color: #ece;
+            font-family: Monaco, Consolas, monospace;
+        }
+        #page {
+            padding: 2rem 1rem;
+            position: relative;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            p {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 60rem;
+            }
+        }
+        a {
+            color: #ece;
+        }
+        img {
+            display: inline-block;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <a href="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/animate.png" title="Animated Radar">
+            <img data-src="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/animate.png" alt="Animated Radar">
+        </a>
+        <br><br>
+        <a href="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/current.png" title="Current Radar">
+            <img data-src="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/current.png" alt="Current Radar">
+        </a>
+        <p>Source: <a href="https://www.wunderground.com/radar/us/va/roanoke">https://www.wunderground.com/radar/us/va/roanoke</a></p>
+        <p>Why does this exist? Because it's *way* faster than loading up an entire site and all its libraries when you just want to see what's on the radar!</p>
+    </div>
+    <script>
+        const domReady = function (fn) {
+            (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
+        }
+
+        const doTheThings = function () {
+            let rid = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+
+            document.querySelectorAll('#page img').forEach(function (img, i) {
+                img.src = `${img.dataset.src}?${rid}`;
+            });
+        };
+
+        domReady(doTheThings);
+    </script>
+</body>
+</html>
