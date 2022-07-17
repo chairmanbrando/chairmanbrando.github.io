@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Here's a Password</title>
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+    <link rel="icon" href="https://bitwarden.com/favicon-32x32.png?v=1abf57d1154002a9fac426a2c5c04d85">
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <style>
+        body {
+            background: #412e54;
+            color: #dcd;
+            font-family: Monaco, Consolas, monospace;
+        }
+        #page {
+            padding: 2rem 1rem;
+            position: relative;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            body > * {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 60rem;
+            }
+        }
+        a {
+            color: #ece;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <p>Need a password? Here you go:</p>
+        <h3 id="pw"></h3>
+        <p>Refresh for another.</p>
+    </div>
+    <script>
+        const domReady = function (fn) {
+            (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
+        }
+
+        let password = function (length) {
+            let str = [];
+            
+            for (let i = 0; i < length; i++) {
+                str.push(String.fromCharCode(Math.floor(Math.random() * 94) + 32));
+            }
+            
+            return str.join('');
+        }
+
+        domReady(function () {
+            document.querySelector('#pw').textContent = password(32);
+        });
+    </script>
+</body>
+</html>
