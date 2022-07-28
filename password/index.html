@@ -18,6 +18,22 @@
             position: relative;
             text-align: center;
         }
+        form label {
+            display: block;
+            text-align: center;
+        }
+        #pw {
+            border: 1px solid rebeccapurple;
+            border-radius: 3px;
+            background: transparent;
+            color: #dcd;
+            font-family: Monaco, Consolas, monospace;
+            font-size: 1.5rem;
+            max-width: 22em !important;
+            padding: 0.25em 0.5em;
+            text-align: center;
+            width: 100%;
+        }
         @media (min-width: 768px) {
             #page > * {
                 display: block;
@@ -33,8 +49,11 @@
 </head>
 <body>
     <div id="page">
-        <p>Need a password? Here you go:</p>
-        <h3 id="pw"></h3>
+        <p>Need a password? Here you go!</p>
+        <form>
+            <label>Click text input to copy.</label>
+            <input id="pw" type="text" onfocus="copy(this)">
+        </form>
         <p>Refresh for another.</p>
     </div>
     <script>
@@ -44,16 +63,26 @@
 
         let password = function (length) {
             let str = [];
-            
+
             for (let i = 0; i < length; i++) {
                 str.push(String.fromCharCode(Math.floor(Math.random() * 94) + 32));
             }
-            
+
             return str.join('');
         }
 
+        let copy = function (elem) {
+            try {
+                elem.select();
+                elem.previousElementSibling.textContent = 'Copied!';
+                navigator.clipboard.writeText(elem.value);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
         domReady(function () {
-            document.querySelector('#pw').textContent = password(32);
+            document.querySelector('#pw').value = password(32);
         });
     </script>
 </body>
