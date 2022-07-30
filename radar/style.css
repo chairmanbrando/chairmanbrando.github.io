@@ -1,0 +1,13 @@
+#page {
+    text-align: center;
+}
+
+    @media (min-width: 768px) {
+        #page > p {
+            max-width: 60rem;
+        }
+    }
+
+img {
+    display: inline-block;
+}

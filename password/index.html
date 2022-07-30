@@ -3,54 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Here's a Password</title>
-    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+    <title>Need a password?</title>
     <link rel="icon" href="https://bitwarden.com/favicon-32x32.png?v=1abf57d1154002a9fac426a2c5c04d85">
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
-    <style>
-        body {
-            background: #412e54;
-            color: #dcd;
-            font-family: Monaco, Consolas, monospace;
-        }
-        #page {
-            padding: 2rem 1rem;
-            position: relative;
-            text-align: center;
-        }
-        form label {
-            display: block;
-            margin-top: 1rem;
-            text-align: center;
-        }
-        form input[type="text"] {
-            border: 1px solid rebeccapurple;
-            border-radius: 3px;
-            background: transparent;
-            color: #dcd;
-            font-family: Monaco, Consolas, monospace;
-            font-size: 1.5rem;
-            max-width: 22em !important;
-            padding: 0.25em 0.5em;
-            text-align: center;
-            width: 100%;
-        }
-        a {
-            color: #ece;
-        }
-        @media (min-width: 768px) {
-            #page > * {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 60rem;
-            }
-        }
-    </style>
+    <link href="../assets/common.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <div id="page">
-        <p>Need a password? Here's two!<br>
+        <p>Need a <a href="https://bitwarden.com/">password</a>? Here's two!<br>
             Click text input to copy.</p>
         <form>
             <label for="pw">Any printable character...</label>
