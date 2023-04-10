@@ -10,10 +10,38 @@ const checkForFullscreen = function () {
     if (window.innerHeight === screen.height) return true;
 };
 
+function randInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 let canvas = null;
 let ctx    = null;
 let img    = new Image;
-let bGo    = true;
+let bGo    = false;
+let af     = null;
+
+let saver = {
+    x:  0,
+    y:  0,
+    dx: 2,
+    dy: 2,
+    img: new Image,
+    init: function () {
+        this.img.src    = "flop.png";
+        this.img.width  = 120;
+        this.img.height = 120;
+        this.x          = randInt(canvas.width - this.img.width);
+        this.y          = randInt(canvas.height - this.img.height);
+    },
+    draw: function () {
+        ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+    },
+    clear: function () {
+        ctx.clearRect(this.x, this.y, this.img.width, this.img.height);
+    }
+};
+
+let savers = [];
 
 function init() {
     canvas = document.getElementById('canvas')
@@ -22,46 +50,37 @@ function init() {
     canvas.width = page.offsetWidth;
     canvas.height = page.offsetHeight;
 
-    img.src    = "flop.png";
-    img.width  = 120;
-    img.height = 120;
-    img.X      = Math.floor(Math.random() * (canvas.width - img.width));
-    img.Y      = Math.floor(Math.random() * (canvas.height - img.height));
-    img.dX     = 2;
-    img.dY     = 2;
+    saver.init();
+    saver.draw();
 
-    ctx.drawImage(img, img.X, img.Y, img.width, img.height);
-
-    window.requestAnimationFrame(draw);
+    af = window.requestAnimationFrame(draw);
 }
 
 function draw() {
-    ctx.clearRect(img.X, img.Y, img.width, img.height);
+    saver.clear();
 
-    if (img.X < 0) {
-        img.dX *= -1;
+    if (saver.x < 0) {
+        saver.dx *= -1;
     }
 
-    if (img.Y < 0) {
-        img.dY *= -1;
+    if (saver.y < 0) {
+        saver.dy *= -1;
     }
 
-    if (img.X > (canvas.width - img.width)) {
-        img.dX *= -1;
+    if (saver.x > (canvas.width - saver.img.width)) {
+        saver.dx *= -1;
     }
 
-    if (img.Y > (canvas.height - img.height)) {
-        img.dY *= -1;
+    if (saver.y > (canvas.height - saver.img.height)) {
+        saver.dy *= -1;
     }
 
-    img.X += img.dX;
-    img.Y += img.dY;
+    saver.x += saver.dx;
+    saver.y += saver.dy;
 
-    ctx.drawImage(img, img.X, img.Y, img.width, img.height);
+    saver.draw();
 
-    if (bGo) {
-        window.requestAnimationFrame(draw);
-    }
+    af = window.requestAnimationFrame(draw);
 }
 
 onWinEvent('resize', function (e) {
@@ -71,10 +90,7 @@ onWinEvent('resize', function (e) {
 
 onDomEvent('keyup', function (e) {
     if (e.key === 'Escape') {
-        if (! bGo) {
-            window.requestAnimationFrame(draw);
-        }
-
+        (bGo) ? af = window.requestAnimationFrame(draw) : window.cancelAnimationFrame(af);
         bGo = ! bGo;
     }
 });
