@@ -75,7 +75,7 @@ function init() {
     canvas.width = page.offsetWidth;
     canvas.height = page.offsetHeight;
 
-    let num = parseInt(getQueryVars().n);
+    let num = parseInt(getQueryVars().n) || 1;
 
     for (let i = 0; i < num; i++) {
         savers.push(saverFactory());
