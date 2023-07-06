@@ -1,0 +1,198 @@
+@font-face {
+    font-display: swap;
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
+}
+
+ @font-face {
+    font-display: swap;
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/fira-code-v21-latin-700.woff2') format('woff2');
+}
+
+:where(:root) {
+    --green:   #adff2f;
+    --pink:    #c58bfe;
+    --magenta: #d0d;
+    --olive:   #41542e;
+    --purple:  #412e54;
+    --purple:  #271c33;
+    --white:   #fffff1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Fira Code', Monaco, Consolas, monospace;
+}
+
+body {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+body.dol {
+    background-color: var(--white);
+    color: var(--purple);
+}
+
+:where(h2, h3, h4) {
+    color: var(--magenta);
+}
+
+h2 {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding: 0.5rem 1.5rem;
+}
+
+    h2:not(:first-child) {
+        margin-top: 2rem;
+    }
+
+    h2:target {
+        background-color: var(--magenta);
+        color: var(--white);
+    }
+
+a {
+    color: var(--magenta);
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dotted var(--white);
+    margin: 3rem -3rem 0 -3rem;
+}
+
+figure {
+    margin: 2rem 0;
+}
+
+    figure img {
+        border: 0.25rem solid var(--magenta);
+        display: block;
+        margin: 0 -1.5rem;
+        width: calc(100% + 3rem);
+    }
+
+    figcaption {
+        /* font-style: italic; */
+        font-size: 80%;
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+
+#page {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+main {
+    flex: 0 0 100%;
+}
+
+    main > :first-child {
+        margin-top: 0;
+    }
+
+    main > :last-child {
+        margin-bottom: 0;
+    }
+
+    main p {
+        -webkit-hyphens: auto;
+        -webkit-hyphenate-limit-before: 3;
+        -webkit-hyphenate-limit-after: 3;
+        -webkit-hyphenate-limit-chars: 6 3 3;
+        -webkit-hyphenate-limit-lines: 2;
+        -webkit-hyphenate-limit-last: always;
+        -webkit-hyphenate-limit-zone: 8%;
+
+        -moz-hyphens: auto;
+        -moz-hyphenate-limit-chars: 6 3 3;
+        -moz-hyphenate-limit-lines: 2;
+        -moz-hyphenate-limit-last: always;
+        -moz-hyphenate-limit-zone: 8%;
+
+        -ms-hyphens: auto;
+        -ms-hyphenate-limit-chars: 6 3 3;
+        -ms-hyphenate-limit-lines: 2;
+        -ms-hyphenate-limit-last: always;
+        -ms-hyphenate-limit-zone: 8%;
+
+        hyphens: auto;
+        hyphenate-limit-chars: 6 3 3;
+        hyphenate-limit-lines: 2;
+        hyphenate-limit-last: always;
+        hyphenate-limit-zone: 8%;
+        text-align: justify;
+    }
+
+aside {
+    flex: 0 0 100%;
+    margin-bottom: 3rem;
+    order: -1;
+}
+
+    aside ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    aside li {
+        display: block;
+        position: relative;
+        margin: 0;
+    }
+
+    aside a {
+        border-bottom: 1px dotted var(--white);
+        display: block;
+        padding: 1rem 1rem 2.6rem;
+    }
+
+    aside small {
+        display: block;
+        padding-left: 1rem;
+        pointer-events: none;
+        position: absolute;
+        top: 2.6rem;
+    }
+
+@media (min-width: 768px) {
+
+    #page {
+        flex-wrap: nowrap;
+        gap: 3rem;
+        padding: 6rem 1rem;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    aside {
+        border-right: 1px dotted var(--white);
+        flex: 0 0 30%;
+        margin-bottom: 0;
+    }
+
+        aside ul {
+            font-size: 1.2rem;
+            position: sticky;
+            top: 0;
+        }
+
+}

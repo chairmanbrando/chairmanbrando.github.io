@@ -1,8 +1,9 @@
-body {
+body:not(.simple) {
     background: url('cubes.png') fixed, linear-gradient(90deg, #cb3e6c -20%, #412e54 86%);
     color: #fff;
     font-family: Monaco, Consolas, monospace;
     min-height: 100vh;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -48,11 +49,9 @@ form input[type="text"] {
             padding: 6rem 1rem;
         }
 
-        @media (min-width: 768px) {
-            #page > :not(br) {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
+        #page > :not(br) {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
