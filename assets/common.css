@@ -1,9 +1,13 @@
-body:not(.simple) {
-    background: url('cubes.png') fixed, linear-gradient(90deg, #cb3e6c -20%, #412e54 86%);
+body {
+    background-color: #412e54;
     color: #fff;
     font-family: Monaco, Consolas, monospace;
     min-height: 100vh;
     scroll-behavior: smooth;
+}
+
+body:not(.simple) {
+    background: url('cubes.png') fixed, linear-gradient(90deg, #cb3e6c -20%, #412e54 86%);
 }
 
 a {
@@ -46,12 +50,14 @@ form input[type="text"] {
 
     @media (min-width: 768px) {
         #page {
-            padding: 6rem 1rem;
+            padding: 6rem;
         }
 
+        /*
         #page > :not(br) {
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
+        */
     }
