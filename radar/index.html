@@ -11,15 +11,34 @@
 </head>
 <body>
     <div id="page">
-        <a href="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/animate.png" title="Animated Radar">
-            <img data-src="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/animate.png" alt="Animated Radar">
+        <div id="radar">
+            <p>These don't line up like I was hoping they would, because nothing can actually be cool in this world, but it <em>kinda</em> works, I guess...</p>
+            <img data-src="https://radar.weather.gov/ridge/standard/KRLX_loop.gif" alt="KRLX_loop.gif">
+            <img data-src="https://radar.weather.gov/ridge/standard/KLWX_loop.gif" alt="KLWX_loop.gif">
+            <img data-src="https://radar.weather.gov/ridge/standard/KFCX_loop.gif" alt="KFCX_loop.gif">
+            <img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
+            <img data-src="https://radar.weather.gov/ridge/standard/KGSP_loop.gif" alt="KGSP_loop.gif">
+            <img data-src="https://radar.weather.gov/ridge/standard/KRAX_loop.gif" alt="KRAX_loop.gif">
+        </div>
+
+        <hr>
+
+        <p>Yes, these government things are fugly. But Wunderground's GIF-based radars stopped being updated on or after Nov 6, 2023, so these will have to do for now.</p>
+
+        <a href="https://radar.weather.gov/station/kakq/standard">
+            <img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
         </a>
-        <br><br>
-        <a href="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/current.png" title="Current Radar">
-            <img data-src="https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usfcx/current.png" alt="Current Radar">
+        <a href="https://radar.weather.gov/region/northeast/standard">
+            <img data-src="https://radar.weather.gov/ridge/standard/CENTGRLAKES_loop.gif" alt="CENTGRLAKES_loop.gif">
         </a>
-        <p>Source: <a href="https://www.wunderground.com/radar/us/va/roanoke">https://www.wunderground.com/radar/us/va/roanoke</a></p>
-        <p>Why does this exist? Because it's *way* faster than loading up an entire site and all its libraries when you just want to see what's on the radar!</p>
+        <a href="https://radar.weather.gov/region/northeast/standard">
+            <img data-src="https://radar.weather.gov/ridge/standard/NORTHEAST_loop.gif" alt="NORTHEAST_loop.gif">
+        </a>
+        <a href="https://radar.weather.gov/region/conus/standard">
+            <img data-src="https://radar.weather.gov/ridge/standard/CONUS_loop.gif" alt="CONUS_loop.gif">
+        </a>
+
+        <p>Why does this page exist? Because it's *way* faster than loading up an entire site and all its libraries when you just want to see what's on the radar!</p>
     </div>
     <script>
         const domReady = function (fn) {
