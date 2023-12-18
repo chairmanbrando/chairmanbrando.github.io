@@ -1,4 +1,6 @@
 #page {
+    min-height: 100vh;
+    padding: 0;
     text-align: center;
 }
 
@@ -21,7 +23,8 @@ hr {
 
 .iframe-wrapper {
     position: relative;
-    padding-bottom: 56.25%;
+    /* padding-bottom: 56.25%; */
+    padding-bottom: 100vh;
 }
 
     .iframe-wrapper iframe {
