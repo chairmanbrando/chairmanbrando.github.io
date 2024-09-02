@@ -1,5 +1,9 @@
+:root {
+    --purps: #412e54;
+}
+
 body {
-    background-color: #412e54;
+    background-color: var(--purps);
     color: #fff;
     font-family: Monaco, Consolas, monospace;
     min-height: 100vh;
@@ -7,7 +11,7 @@ body {
 }
 
 body:not(.simple) {
-    background: url('cubes.png') fixed, linear-gradient(90deg, #cb3e6c -20%, #412e54 86%);
+    background: url('cubes.png') fixed, linear-gradient(135deg, #835da9 -20%, var(--purps) 86%);
 }
 
 a {
@@ -60,4 +64,18 @@ form input[type="text"] {
             margin-right: auto;
         }
         */
+    }
+
+    .inner {
+        background-color: #fff;
+        color: var(--purps);
+        padding: 2rem;
+
+        :first-child {
+            margin-top: 0;
+        }
+
+        :last-child {
+            margin-bottom: 0;
+        }
     }
