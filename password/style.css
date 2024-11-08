@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+form input[type="text"] {
+    text-overflow: ellipsis;
+}
+
 @media (min-width: 768px) {
     #page > * {
         margin-left: auto;

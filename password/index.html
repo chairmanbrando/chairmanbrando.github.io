@@ -14,25 +14,32 @@
         <p>Need a <a href="https://bitwarden.com/">password</a>? Here's two!<br>
             Click text input to copy.</p>
         <form>
+            <label for="ln">Characters: <span id="ch">32</span></label>
+            <input id="ln" type="range" min="20" max="128" step="2" value="32">
             <label for="pw">Any printable character...</label>
             <input id="pw" type="text" onfocus="copy(this)">
             <label for="an">Alphanumeric only...</label>
             <input id="an" type="text" onfocus="copy(this)">
         </form>
-        <p>Refresh for two more.</p>
+        <p>Remember: Password <em>strength</em> is in its <em>length</em>.<br>
+            Make 'em long to make 'em strong.</p>
     </div>
     <script>
+        const $pw = document.querySelector('#pw');
+        const $an = document.querySelector('#an');
+        const $ch = document.querySelector('#ch');
+
         const domReady = function (fn) {
             (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
         }
 
         // min = inclusive; max = exclusive
-        let random = function (min, max) {
+        const random = function (min, max) {
             return Math.floor(Math.random() * (max - min)) + min;
         }
 
         // all printable ascii characters by default
-        let password = function (length, ...ranges) {
+        const password = function (length, ...ranges) {
             ranges = (ranges.length) ? ranges : [[32, 127]];
 
             let str = [];
@@ -46,7 +53,16 @@
             return str.join('');
         }
 
-        let copy = function (elem) {
+        // generate and fill!
+        const generate = function(length) {
+            $pw.value = password(parseInt(length, 10));
+            $an.value = password(parseInt(length, 10), [48, 58], [65, 91], [97, 123]);
+        }
+
+        // to the clipboard we go
+        const copy = function (elem) {
+            const original = elem.previousElementSibling.textContent;
+
             try {
                 elem.select();
                 elem.previousElementSibling.textContent = 'Copied!';
@@ -54,11 +70,20 @@
             } catch (error) {
                 console.log(error);
             }
+
+            setTimeout(() => {
+                elem.previousElementSibling.textContent = original;
+            }, 2000);
         }
 
+        // let's get this dorodango rolling
         domReady(function () {
-            document.querySelector('#pw').value = password(32);
-            document.querySelector('#an').value = password(32, [48, 58], [65, 91], [97, 123]);
+            generate(32);
+
+            document.querySelector('#ln').addEventListener('input', e => {
+                $ch.textContent = e.target.value;
+                generate(parseInt(e.target.value, 10));
+            });
         });
     </script>
 </body>
