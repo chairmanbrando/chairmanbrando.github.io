@@ -1,9 +1,12 @@
+body:not(.windowed) {
+    cursor: none;
+}
+
 #page {
     background: #222;
     height: 100vh;
     padding: 0;
     width: 100vw;
-
 }
 
 #canvas {
