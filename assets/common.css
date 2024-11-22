@@ -6,27 +6,76 @@
     --mags:  #f0f
 }
 
-body {
-    background-color: var(--purps);
-    color: #fff;
-    font-family: Monaco, Consolas, monospace;
-    min-height: 100vh;
+@font-face {
+    font-display: swap;
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/fira-code-v21-latin-700.woff2') format('woff2');
+}
+
+:where(:root) {
+    --green: #adff2f;
+    --pink: #c58bfe;
+    --magenta: #d0d;
+    --olive: #41542e;
+    --purple-old: #412e54;
+    --purple-new: #56488f;
+    --purple-dark: #271c33;
+    --purple-light: #c08ff2;
+    --white: #fffff1;
+    --white-rgb: 255, 255, 241;
+
+    /* @@ Hook this up in all the places. */
+    --pad: 1.5rem;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
-body:not(.simple) {
-    background: url('cubes.png') fixed, linear-gradient(135deg, var(--purpl) -20%, var(--purps) 86%);
+body {
+    background-color: var(--purps);
+    color: var(--white);
+    font-family: 'Fira Code', Monaco, Consolas, monospace;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+
+    &.has-partials {
+        > div {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    }
+
+    &.partials-loaded {
+        > div {
+            opacity: 1;
+        }
+    }
+
+    &:not(.simple) {
+        background: url('cubes.png') fixed, linear-gradient(135deg, var(--purpl) -20%, var(--purps) 86%);
+    }
 }
 
 a {
     color: var(--mags);
     text-decoration: underline;
     transition: color 0.33s;
-}
 
-    a:hover {
+    &:hover {
         color: #fff;
     }
+}
 
 button {
     background: var(--purpb);
