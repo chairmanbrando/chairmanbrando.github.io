@@ -1,53 +1,5 @@
-@font-face {
-    font-display: swap;
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../assets/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
-}
-
- @font-face {
-    font-display: swap;
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../assets/fonts/fira-code-v21-latin-700.woff2') format('woff2');
-}
-
-:where(:root) {
-    --green:        #adff2f;
-    --pink:         #c58bfe;
-    --magenta:      #d0d;
-    --olive:        #41542e;
-    --purple-old:   #412e54;
-    --purple-new:   #56488f;
-    --purple-dark:  #271c33;
-    --purple-light: #c08ff2;
-    --white:        #fffff1;
-    --white-rgb:    255, 255, 241;
-
-    /* @@ Hook this up in all the places. */
-    --pad: 1.5rem;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--purple-dark);
-    color: var(--white);
-    /* font-family: Verdana, sans-serif; */
-    font-family: 'Fira Code', Monaco, Consolas, monospace;
-}
-
-body.dol {
-    background-color: var(--white);
-    color: var(--purple-dark);
-}
-
 :where(h2, h3, h4) {
-    color: var(--purple-light);
+    color: var(--magenta);
 }
 
 h2 {
@@ -62,17 +14,13 @@ h2 {
     }
 
     h2:target {
-        background-color: var(--purple-new);
+        background-color: var(--purple-dark);
         color: var(--white);
     }
 
-a {
-    color: var(--purple-light);
-}
-
 hr {
     border: 0;
-    border-bottom: 1px dotted rgba(var(--white-rgb), 0);
+    border-bottom: 1px dotted var(--white);
     margin: 4rem 0 0 0;
 }
 
@@ -107,30 +55,6 @@ figure {
     max-width: 1200px;
     position: relative;
 }
-
-header {
-    background-color: var(--purple-new);
-    color: rgba(var(--white-rgb), 0.80);
-    padding: var(--pad);
-}
-
-    header .contain {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-    }
-
-        header a {
-            color: rgba(var(--white-rgb), 0.80);
-            font-size: 2rem;
-            text-decoration: none;
-            letter-spacing: -0.05em;
-        }
-
-        header img {
-            border-radius: 65px;
-            max-width: 65px;
-        }
 
 #page {
     display: flex;
@@ -209,18 +133,6 @@ aside {
         pointer-events: none;
         position: absolute;
         top: 2.6rem;
-    }
-
-footer {
-    background-color: var(--purple-new);
-    color: rgba(var(--white-rgb), 0.80);
-    padding: var(--pad);
-    text-align: center;
-}
-
-    footer a {
-        color: var(--white);
-        text-decoration: underline 1px dotted rgba(var(--white-rgb), 0.5);
     }
 
 @media (min-width: 768px) {
