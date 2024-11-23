@@ -65,6 +65,11 @@ body {
     &:not(.simple) {
         background: url('cubes.png') fixed, linear-gradient(135deg, var(--purpl) -20%, var(--purps) 86%);
     }
+
+    &.dark-on-light {
+        background-color: var(--white);
+        color: var(--purple-dark);
+    }
 }
 
 a {
@@ -73,7 +78,7 @@ a {
     transition: color 0.33s;
 
     &:hover {
-        color: #fff;
+        color: var(--green);
     }
 }
 
