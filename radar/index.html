@@ -1,68 +1,68 @@
 <!doctype html>
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>What's on the radar?</title>
-    <link rel="icon" href="https://www.wunderground.com/static/i/c/v4/30.svg">
-    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
-    <link href="../assets/common.css" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>What's on the radar?</title>
+	<link rel="icon" href="https://www.wunderground.com/static/i/c/v4/30.svg">
+	<link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+	<link href="../assets/common.css" rel="stylesheet">
+	<link href="./style.css" rel="stylesheet">
 </head>
 <body>
-    <div id="page">
-        <!-- This is an option, and certainly nicer than weather.gov, but the point was *not* to load heavy stuff! -->
-        <div class="iframe-wrapper">
-            <iframe width="1200" height="750" src="https://embed.windy.com/embed2.html?lat=37.675&lon=-77.959&detailLat=37.614&detailLon=-77.388&width=1200&height=750&zoom=9&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1" frameborder="0"></iframe>
-        </div>
+	<div id="page">
+		<!-- This is an option, and certainly nicer than weather.gov, but the point was *not* to load heavy stuff! -->
+		<div class="iframe-wrapper">
+			<iframe width="1200" height="750" src="https://embed.windy.com/embed2.html?lat=37.675&lon=-77.959&detailLat=37.614&detailLon=-77.388&width=1200&height=750&zoom=9&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1" frameborder="0"></iframe>
+		</div>
 
-        <!--
-        <hr>
+		<!--
+		<hr>
 
-        <p>Yes, these government things are fugly. But Wunderground's GIF-based radars stopped being updated on or after Nov 6, 2023, so these will have to do for now.</p>
+		<p>Yes, these government things are fugly. But Wunderground's GIF-based radars stopped being updated on or after Nov 6, 2023, so these will have to do for now.</p>
 
-        <a href="https://radar.weather.gov/station/kakq/standard">
-            <img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
-        </a>
-        <a href="https://radar.weather.gov/region/northeast/standard">
-            <img data-src="https://radar.weather.gov/ridge/standard/CENTGRLAKES_loop.gif" alt="CENTGRLAKES_loop.gif">
-        </a>
-        <a href="https://radar.weather.gov/region/northeast/standard">
-            <img data-src="https://radar.weather.gov/ridge/standard/NORTHEAST_loop.gif" alt="NORTHEAST_loop.gif">
-        </a>
-        <a href="https://radar.weather.gov/region/conus/standard">
-            <img data-src="https://radar.weather.gov/ridge/standard/CONUS_loop.gif" alt="CONUS_loop.gif">
-        </a>
+		<a href="https://radar.weather.gov/station/kakq/standard">
+			<img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
+		</a>
+		<a href="https://radar.weather.gov/region/northeast/standard">
+			<img data-src="https://radar.weather.gov/ridge/standard/CENTGRLAKES_loop.gif" alt="CENTGRLAKES_loop.gif">
+		</a>
+		<a href="https://radar.weather.gov/region/northeast/standard">
+			<img data-src="https://radar.weather.gov/ridge/standard/NORTHEAST_loop.gif" alt="NORTHEAST_loop.gif">
+		</a>
+		<a href="https://radar.weather.gov/region/conus/standard">
+			<img data-src="https://radar.weather.gov/ridge/standard/CONUS_loop.gif" alt="CONUS_loop.gif">
+		</a>
 
-        <hr>
+		<hr>
 
-        <div id="radar">
-            <p>These don't line up like I was hoping they would, because nothing can actually be cool in this world, but it <em>kinda</em> works, I guess...</p>
-            <img data-src="https://radar.weather.gov/ridge/standard/KRLX_loop.gif" alt="KRLX_loop.gif">
-            <img data-src="https://radar.weather.gov/ridge/standard/KLWX_loop.gif" alt="KLWX_loop.gif">
-            <img data-src="https://radar.weather.gov/ridge/standard/KFCX_loop.gif" alt="KFCX_loop.gif">
-            <img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
-            <img data-src="https://radar.weather.gov/ridge/standard/KGSP_loop.gif" alt="KGSP_loop.gif">
-            <img data-src="https://radar.weather.gov/ridge/standard/KRAX_loop.gif" alt="KRAX_loop.gif">
-        </div>
-        -->
-    </div>
-    <script>
-        const domReady = function (fn) {
-            (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
-        }
+		<div id="radar">
+			<p>These don't line up like I was hoping they would, because nothing can actually be cool in this world, but it <em>kinda</em> works, I guess...</p>
+			<img data-src="https://radar.weather.gov/ridge/standard/KRLX_loop.gif" alt="KRLX_loop.gif">
+			<img data-src="https://radar.weather.gov/ridge/standard/KLWX_loop.gif" alt="KLWX_loop.gif">
+			<img data-src="https://radar.weather.gov/ridge/standard/KFCX_loop.gif" alt="KFCX_loop.gif">
+			<img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
+			<img data-src="https://radar.weather.gov/ridge/standard/KGSP_loop.gif" alt="KGSP_loop.gif">
+			<img data-src="https://radar.weather.gov/ridge/standard/KRAX_loop.gif" alt="KRAX_loop.gif">
+		</div>
+		-->
+	</div>
+	<script>
+		const domReady = function (fn) {
+			(document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
+		}
 
-        const doTheThings = function () {
-            let rid = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+		const doTheThings = function () {
+			let rid = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 
-            document.querySelectorAll('#page img').forEach(function (img, i) {
-                img.src = `${img.dataset.src}?${rid}`;
-            });
-        };
+			document.querySelectorAll('#page img').forEach(function (img, i) {
+				img.src = `${img.dataset.src}?${rid}`;
+			});
+		};
 
-        domReady(doTheThings);
+		domReady(doTheThings);
 
-        // @todo Check out this free and open-source weather API: https://open-meteo.com/
-    </script>
+		// @todo Check out this free and open-source weather API: https://open-meteo.com/
+	</script>
 </body>
 </html>

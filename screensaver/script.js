@@ -2,81 +2,81 @@ const onDomEvent = document.addEventListener;
 const onWinEvent = window.addEventListener;
 
 function onDomReady(fn) {
-    (document.readyState === 'loading') ? onDomEvent('DOMContentLoaded', fn) : fn();
+	(document.readyState === 'loading') ? onDomEvent('DOMContentLoaded', fn) : fn();
 }
 
 function getQueryVars() {
-    var split = window.location.search.substring(1).split('&'),
-        vars  = {};
+	var split = window.location.search.substring(1).split('&'),
+		vars  = {};
 
-    split.forEach(function (i) {
-        var parts = i.split('=');
+	split.forEach(function (i) {
+		var parts = i.split('=');
 
-        vars[parts[0]] = parts[1];
-    });
+		vars[parts[0]] = parts[1];
+	});
 
-    return vars;
+	return vars;
 }
 
 function randInt(max) {
-    return Math.floor(Math.random() * max);
+	return Math.floor(Math.random() * max);
 }
 
 function isFullscreen() {
-    return (window.innerWidth === screen.width && window.innerHeight === screen.height);
+	return (window.innerWidth === screen.width && window.innerHeight === screen.height);
 };
 
 // @@ Going slower is kinda busted. May need to separate speed and velocity.
 function adjustSpeed(amount) {
-    savers.forEach(function (saver) {
-        (saver.dx > 0) ? saver.dx += amount : saver.dx -= amount;
-        (saver.dy > 0) ? saver.dy += amount : saver.dy -= amount;
-    });
+	savers.forEach(function (saver) {
+		(saver.dx > 0) ? saver.dx += amount : saver.dx -= amount;
+		(saver.dy > 0) ? saver.dy += amount : saver.dy -= amount;
+	});
 }
 
 function solitaireMode() {
-    savers.forEach(function (saver) {
-        saver.trail = !saver.trail;
-    });
+	savers.forEach(function (saver) {
+		saver.trail = !saver.trail;
+	});
 }
 
 function saverFactory() {
-    return {
-        x: 0,
-        y: 0,
-        dx: randInt(4) + 2,
-        dy: randInt(4) + 2,
-        img: new Image,
-        trail: false,
-        init: function () {
-            this.img.src    = "flop.png";
-            this.img.width  = 120;
-            this.img.height = 120;
-            this.x          = randInt(canvas.width - this.img.width);
-            this.y          = randInt(canvas.height - this.img.height);
-        },
-        draw: function () {
-            ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
-        },
-        clear: function () {
-            if (! this.trail) {
-                ctx.clearRect(this.x, this.y, this.img.width, this.img.height);
-            }
-        },
-        checkBounds: function () {
-            if (this.x < 0 || this.x > (canvas.width - this.img.width)) {
-                this.dx *= -1;
-            }
-            
-            if (this.y < 0 || this.y > (canvas.height - this.img.height)) {
-                this.dy *= -1;
-            }
-        },
-        update: function () {
-            this.x += this.dx;
-            this.y += this.dy;
-        }
-    };
+	return {
+		x: 0,
+		y: 0,
+		dx: randInt(4) + 2,
+		dy: randInt(4) + 2,
+		img: new Image,
+		trail: false,
+		init: function () {
+			this.img.src    = "flop.png";
+			this.img.width  = 120;
+			this.img.height = 120;
+			this.x          = randInt(canvas.width - this.img.width);
+			this.y          = randInt(canvas.height - this.img.height);
+		},
+		draw: function () {
+			ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+		},
+		clear: function () {
+			if (! this.trail) {
+				ctx.clearRect(this.x, this.y, this.img.width, this.img.height);
+			}
+		},
+		checkBounds: function () {
+			if (this.x < 0 || this.x > (canvas.width - this.img.width)) {
+				this.dx *= -1;
+			}
+
+			if (this.y < 0 || this.y > (canvas.height - this.img.height)) {
+				this.dy *= -1;
+			}
+		},
+		update: function () {
+			this.x += this.dx;
+			this.y += this.dy;
+		}
+	};
 }
 
 let savers = [];
@@ -86,64 +86,64 @@ let bGo    = false;
 let raf    = null;
 
 function init() {
-    canvas = document.getElementById('canvas')
-    ctx = canvas.getContext('2d');
+	canvas = document.getElementById('canvas')
+	ctx = canvas.getContext('2d');
 
-    canvas.width = page.offsetWidth;
-    canvas.height = page.offsetHeight;
+	canvas.width = page.offsetWidth;
+	canvas.height = page.offsetHeight;
 
-    let num = parseInt(getQueryVars().n) || 1;
+	let num = parseInt(getQueryVars().n) || 1;
 
-    for (let i = 0; i < num; i++) {
-        savers.push(saverFactory());
-    }
+	for (let i = 0; i < num; i++) {
+		savers.push(saverFactory());
+	}
 
-    savers.forEach(function (saver) {
-        saver.init();
-        saver.draw();
-    });
+	savers.forEach(function (saver) {
+		saver.init();
+		saver.draw();
+	});
 
-    raf = window.requestAnimationFrame(draw);
+	raf = window.requestAnimationFrame(draw);
 }
 
 function draw() {
-    savers.forEach(function (saver) {
-        saver.clear();
-        saver.checkBounds();
-        saver.update();
-        saver.draw();
-    });
+	savers.forEach(function (saver) {
+		saver.clear();
+		saver.checkBounds();
+		saver.update();
+		saver.draw();
+	});
 
-    raf = window.requestAnimationFrame(draw);
+	raf = window.requestAnimationFrame(draw);
 }
 
 onWinEvent('resize', function (e) {
-    canvas.width  = page.offsetWidth;
-    canvas.height = page.offsetHeight;
+	canvas.width  = page.offsetWidth;
+	canvas.height = page.offsetHeight;
 
-    (isFullscreen())
-        ? document.body.classList.remove('windowed')
-        : document.body.classList.add('windowed');
+	(isFullscreen())
+		? document.body.classList.remove('windowed')
+		: document.body.classList.add('windowed');
 });
 
 onDomEvent('keyup', function (e) {
-    switch (e.key) {
-        case 'Escape' :
-            (bGo) ? raf = window.requestAnimationFrame(draw) : window.cancelAnimationFrame(raf);
-            bGo = !bGo;
-            break;
-        case '+':
-        case '=':
-            adjustSpeed(1);
-            break;
-        case '-':
-        case '_':
-            adjustSpeed(-1);
-            break;
-        case 's':
-            solitaireMode();
-            break;
-    }
+	switch (e.key) {
+		case 'Escape' :
+			(bGo) ? raf = window.requestAnimationFrame(draw) : window.cancelAnimationFrame(raf);
+			bGo = !bGo;
+			break;
+		case '+':
+		case '=':
+			adjustSpeed(1);
+			break;
+		case '-':
+		case '_':
+			adjustSpeed(-1);
+			break;
+		case 's':
+			solitaireMode();
+			break;
+	}
 });
 
 onDomReady(init);
