@@ -3,19 +3,19 @@
  * loaded, add a class to the body to let everyone know.
  */
 document.addEventListener('DOMContentLoaded', e => {
-    const proms = [];
+	const proms = [];
 
-    document.querySelectorAll('div.partial').forEach(part => {
-        const url = part.getAttribute('data-partial');
+	document.querySelectorAll('div.partial').forEach(part => {
+		const url = part.getAttribute('data-partial');
 
-        proms.push(
-            fetch(url)
-                .then(response => response.text())
-                .then(html => {
-                    part.innerHTML = html;
-                })
-        );
-    });
+		proms.push(
+			fetch(url)
+				.then(response => response.text())
+				.then(html => {
+					part.innerHTML = html;
+				})
+		);
+	});
 
-    Promise.all(proms).then(nada => document.body.classList.add('partials-loaded'));
+	Promise.all(proms).then(nada => document.body.classList.add('partials-loaded'));
 });

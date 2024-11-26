@@ -1,90 +1,90 @@
 <!doctype html>
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Need a password?</title>
-    <link rel="icon" href="https://bitwarden.com/favicon-32x32.png?v=1abf57d1154002a9fac426a2c5c04d85">
-    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
-    <link href="../assets/common.css" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Need a password?</title>
+	<link rel="icon" href="https://bitwarden.com/favicon-32x32.png?v=1abf57d1154002a9fac426a2c5c04d85">
+	<link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+	<link href="../assets/common.css" rel="stylesheet">
+	<link href="./style.css" rel="stylesheet">
 </head>
 <body>
-    <div id="page">
-        <p>Need a <a href="https://bitwarden.com/">password</a>? Here's two!<br>
-            Click text input to copy.</p>
-        <form>
-            <label for="ln">Characters: <span id="ch">32</span></label>
-            <input id="ln" type="range" min="20" max="128" step="2" value="32">
-            <label for="pw">Any printable character...</label>
-            <input id="pw" type="text" onfocus="copy(this)">
-            <label for="an">Alphanumeric only...</label>
-            <input id="an" type="text" onfocus="copy(this)">
-        </form>
-        <p>Remember: Password <em>strength</em> is in its <em>length</em>.<br>
-            Make 'em long to make 'em strong.</p>
-    </div>
-    <script>
-        const $pw = document.querySelector('#pw');
-        const $an = document.querySelector('#an');
-        const $ch = document.querySelector('#ch');
+	<div id="page">
+		<p>Need a <a href="https://bitwarden.com/">password</a>? Here's two!<br>
+			Click text input to copy.</p>
+		<form>
+			<label for="ln">Characters: <span id="ch">32</span></label>
+			<input id="ln" type="range" min="20" max="128" step="2" value="32">
+			<label for="pw">Any printable character...</label>
+			<input id="pw" type="text" onfocus="copy(this)">
+			<label for="an">Alphanumeric only...</label>
+			<input id="an" type="text" onfocus="copy(this)">
+		</form>
+		<p>Remember: Password <em>strength</em> is in its <em>length</em>.<br>
+			Make 'em long to make 'em strong.</p>
+	</div>
+	<script>
+		const $pw = document.querySelector('#pw');
+		const $an = document.querySelector('#an');
+		const $ch = document.querySelector('#ch');
 
-        const domReady = function (fn) {
-            (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
-        }
+		const domReady = function (fn) {
+			(document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
+		}
 
-        // min = inclusive; max = exclusive
-        const random = function (min, max) {
-            return Math.floor(Math.random() * (max - min)) + min;
-        }
+		// min = inclusive; max = exclusive
+		const random = function (min, max) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
 
-        // all printable ascii characters by default
-        const password = function (length, ...ranges) {
-            ranges = (ranges.length) ? ranges : [[32, 127]];
+		// all printable ascii characters by default
+		const password = function (length, ...ranges) {
+			ranges = (ranges.length) ? ranges : [[32, 127]];
 
-            let str = [];
+			let str = [];
 
-            for (let i = 0; i < length; i++) {
-                let r = random(0, ranges.length);
+			for (let i = 0; i < length; i++) {
+				let r = random(0, ranges.length);
 
-                str.push(String.fromCharCode(random(ranges[r][0], ranges[r][1])));
-            }
+				str.push(String.fromCharCode(random(ranges[r][0], ranges[r][1])));
+			}
 
-            return str.join('');
-        }
+			return str.join('');
+		}
 
-        // generate and fill!
-        const generate = function(length) {
-            $pw.value = password(parseInt(length, 10));
-            $an.value = password(parseInt(length, 10), [48, 58], [65, 91], [97, 123]);
-        }
+		// generate and fill!
+		const generate = function(length) {
+			$pw.value = password(parseInt(length, 10));
+			$an.value = password(parseInt(length, 10), [48, 58], [65, 91], [97, 123]);
+		}
 
-        // to the clipboard we go
-        const copy = function (elem) {
-            const original = elem.previousElementSibling.textContent;
+		// to the clipboard we go
+		const copy = function (elem) {
+			const original = elem.previousElementSibling.textContent;
 
-            try {
-                elem.select();
-                elem.previousElementSibling.textContent = 'Copied!';
-                navigator.clipboard.writeText(elem.value);
-            } catch (error) {
-                console.log(error);
-            }
+			try {
+				elem.select();
+				elem.previousElementSibling.textContent = 'Copied!';
+				navigator.clipboard.writeText(elem.value);
+			} catch (error) {
+				console.log(error);
+			}
 
-            setTimeout(() => {
-                elem.previousElementSibling.textContent = original;
-            }, 2000);
-        }
+			setTimeout(() => {
+				elem.previousElementSibling.textContent = original;
+			}, 2000);
+		}
 
-        // let's get this dorodango rolling
-        domReady(function () {
-            generate(32);
+		// let's get this dorodango rolling
+		domReady(function () {
+			generate(32);
 
-            document.querySelector('#ln').addEventListener('input', e => {
-                $ch.textContent = e.target.value;
-                generate(parseInt(e.target.value, 10));
-            });
-        });
-    </script>
+			document.querySelector('#ln').addEventListener('input', e => {
+				$ch.textContent = e.target.value;
+				generate(parseInt(e.target.value, 10));
+			});
+		});
+	</script>
 </body>
 </html>

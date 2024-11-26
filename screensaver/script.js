@@ -2,21 +2,21 @@ const onDomEvent = document.addEventListener;
 const onWinEvent = window.addEventListener;
 
 function onDomReady(fn) {
-    (document.readyState === 'loading') ? onDomEvent('DOMContentLoaded', fn) : fn();
+	(document.readyState === 'loading') ? onDomEvent('DOMContentLoaded', fn) : fn();
 }
 
 // Yes, `URLSearchParams` exists but I forgot.
 function getQueryVars() {
-    var split = window.location.search.substring(1).split('&'),
-        vars  = {};
+	var split = window.location.search.substring(1).split('&'),
+		vars  = {};
 
-    split.forEach(function (i) {
-        var parts = i.split('=');
+	split.forEach(function (i) {
+		var parts = i.split('=');
 
-        vars[parts[0]] = parts[1];
-    });
+		vars[parts[0]] = parts[1];
+	});
 
-    return vars;
+	return vars;
 }
 
 function randInt(min, max) {
@@ -24,21 +24,21 @@ function randInt(min, max) {
 }
 
 function isFullscreen() {
-    return (window.innerWidth === screen.width && window.innerHeight === screen.height);
+	return (window.innerWidth === screen.width && window.innerHeight === screen.height);
 };
 
 // @@ Going slower is kinda busted. May need to separate speed and velocity.
 function adjustSpeed(amount) {
-    savers.forEach(function (saver) {
-        (saver.dx > 0) ? saver.dx += amount : saver.dx -= amount;
-        (saver.dy > 0) ? saver.dy += amount : saver.dy -= amount;
-    });
+	savers.forEach(function (saver) {
+		(saver.dx > 0) ? saver.dx += amount : saver.dx -= amount;
+		(saver.dy > 0) ? saver.dy += amount : saver.dy -= amount;
+	});
 }
 
 function solitaireMode() {
-    savers.forEach(function (saver) {
-        saver.trail = !saver.trail;
-    });
+	savers.forEach(function (saver) {
+		saver.trail = !saver.trail;
+	});
 }
 
 function saverFactory() {
@@ -100,58 +100,58 @@ function init() {
     canvas.width  = page.offsetWidth;
     canvas.height = page.offsetHeight;
 
-    let num = parseInt(getQueryVars().n) || 1;
+	let num = parseInt(getQueryVars().n) || 1;
 
-    for (let i = 0; i < num; i++) {
-        savers.push(saverFactory());
-    }
+	for (let i = 0; i < num; i++) {
+		savers.push(saverFactory());
+	}
 
-    savers.forEach(function (saver) {
-        saver.init();
-        saver.draw();
-    });
+	savers.forEach(function (saver) {
+		saver.init();
+		saver.draw();
+	});
 
-    raf = window.requestAnimationFrame(draw);
+	raf = window.requestAnimationFrame(draw);
 }
 
 function draw() {
-    savers.forEach(function (saver) {
-        saver.clear();
-        saver.checkBounds();
-        saver.update();
-        saver.draw();
-    });
+	savers.forEach(function (saver) {
+		saver.clear();
+		saver.checkBounds();
+		saver.update();
+		saver.draw();
+	});
 
-    raf = window.requestAnimationFrame(draw);
+	raf = window.requestAnimationFrame(draw);
 }
 
 onWinEvent('resize', function (e) {
-    canvas.width  = page.offsetWidth;
-    canvas.height = page.offsetHeight;
+	canvas.width  = page.offsetWidth;
+	canvas.height = page.offsetHeight;
 
-    (isFullscreen())
-        ? document.body.classList.remove('windowed')
-        : document.body.classList.add('windowed');
+	(isFullscreen())
+		? document.body.classList.remove('windowed')
+		: document.body.classList.add('windowed');
 });
 
 onDomEvent('keyup', function (e) {
-    switch (e.key) {
-        case 'Escape' :
-            (bGo) ? raf = window.requestAnimationFrame(draw) : window.cancelAnimationFrame(raf);
-            bGo = !bGo;
-            break;
-        case '+':
-        case '=':
-            adjustSpeed(1);
-            break;
-        case '-':
-        case '_':
-            adjustSpeed(-1);
-            break;
-        case 's':
-            solitaireMode();
-            break;
-    }
+	switch (e.key) {
+		case 'Escape' :
+			(bGo) ? raf = window.requestAnimationFrame(draw) : window.cancelAnimationFrame(raf);
+			bGo = !bGo;
+			break;
+		case '+':
+		case '=':
+			adjustSpeed(1);
+			break;
+		case '-':
+		case '_':
+			adjustSpeed(-1);
+			break;
+		case 's':
+			solitaireMode();
+			break;
+	}
 });
 
 onDomReady(init);

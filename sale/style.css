@@ -1,268 +1,180 @@
-@font-face {
-    font-display: swap;
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../assets/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
-}
-
- @font-face {
-    font-display: swap;
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../assets/fonts/fira-code-v21-latin-700.woff2') format('woff2');
-}
-
-:where(:root) {
-    --green:        #adff2f;
-    --pink:         #c58bfe;
-    --magenta:      #d0d;
-    --olive:        #41542e;
-    --purple-old:   #412e54;
-    --purple-new:   #56488f;
-    --purple-dark:  #271c33;
-    --purple-light: #c08ff2;
-    --white:        #fffff1;
-    --white-rgb:    255, 255, 241;
-
-    /* @@ Hook this up in all the places. */
-    --pad: 1.5rem;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--purple-dark);
-    color: var(--white);
-    /* font-family: Verdana, sans-serif; */
-    font-family: 'Fira Code', Monaco, Consolas, monospace;
-}
-
-body.dol {
-    background-color: var(--white);
-    color: var(--purple-dark);
-}
-
 :where(h2, h3, h4) {
-    color: var(--purple-light);
+	color: var(--magenta);
 }
 
 h2 {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    padding: 0.5rem 1.5rem;
-    transition: background-color 0.5s ease-in-out;
+	margin-left: -1.5rem;
+	margin-right: -1.5rem;
+	padding: 0.5rem 1.5rem;
+	transition: background-color 0.5s ease-in-out;
 }
 
-    h2:not(:first-child) {
-        margin-top: 2rem;
-    }
+	h2:not(:first-child) {
+		margin-top: 2rem;
+	}
 
-    h2:target {
-        background-color: var(--purple-new);
-        color: var(--white);
-    }
-
-a {
-    color: var(--purple-light);
-}
+	h2:target {
+		background-color: var(--purple-dark);
+		color: var(--white);
+	}
 
 hr {
-    border: 0;
-    border-bottom: 1px dotted rgba(var(--white-rgb), 0);
-    margin: 4rem 0 0 0;
+	border: 0;
+	border-bottom: 1px dotted var(--white);
+	margin: 4rem 0 0 0;
 }
 
 img {
-    height: auto;
-    max-width: 100%;
+	height: auto;
+	max-width: 100%;
 }
 
 figure {
-    margin: 3rem 0;
+	margin: 3rem 0;
 }
 
-    figure img {
-        border: 2px solid var(--purple-light);
-        border-left-width: 0;
-        border-right-width: 0;
-        display: block;
-        margin: 0 -1.5rem;
-        max-width: calc(100% + 3rem);
-        width: calc(100% + 3rem);
-    }
+	figure img {
+		border: 2px solid var(--purple-light);
+		border-left-width: 0;
+		border-right-width: 0;
+		display: block;
+		margin: 0 -1.5rem;
+		max-width: calc(100% + 3rem);
+		width: calc(100% + 3rem);
+	}
 
-    figcaption {
-        font-size: 80%;
-        font-style: italic;
-        margin-top: 0.5rem;
-        text-align: center;
-    }
+	figcaption {
+		font-size: 80%;
+		font-style: italic;
+		margin-top: 0.5rem;
+		text-align: center;
+	}
 
 .contain {
-    margin: 0 auto;
-    max-width: 1200px;
-    position: relative;
+	margin: 0 auto;
+	max-width: 1200px;
+	position: relative;
 }
-
-header {
-    background-color: var(--purple-new);
-    color: rgba(var(--white-rgb), 0.80);
-    padding: var(--pad);
-}
-
-    header .contain {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-    }
-
-        header a {
-            color: rgba(var(--white-rgb), 0.80);
-            font-size: 2rem;
-            text-decoration: none;
-            letter-spacing: -0.05em;
-        }
-
-        header img {
-            border-radius: 65px;
-            max-width: 65px;
-        }
 
 #page {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 2rem 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 2rem 1.5rem;
 }
 
 main {
-    flex: 0 0 100%;
+	flex: 0 0 100%;
 }
 
-    main > :first-child {
-        margin-top: 0;
-    }
+	main > :first-child {
+		margin-top: 0;
+	}
 
-    main > :last-child {
-        margin-bottom: 0;
-    }
+	main > :last-child {
+		margin-bottom: 0;
+	}
 
-    main p {
-        -webkit-hyphens: auto;
-        -webkit-hyphenate-limit-before: 3;
-        -webkit-hyphenate-limit-after: 3;
-        -webkit-hyphenate-limit-chars: 6 3 3;
-        -webkit-hyphenate-limit-lines: 2;
-        -webkit-hyphenate-limit-last: always;
-        -webkit-hyphenate-limit-zone: 8%;
+	main p {
+		-webkit-hyphens: auto;
+		-webkit-hyphenate-limit-before: 3;
+		-webkit-hyphenate-limit-after: 3;
+		-webkit-hyphenate-limit-chars: 6 3 3;
+		-webkit-hyphenate-limit-lines: 2;
+		-webkit-hyphenate-limit-last: always;
+		-webkit-hyphenate-limit-zone: 8%;
 
-        -moz-hyphens: auto;
-        -moz-hyphenate-limit-chars: 6 3 3;
-        -moz-hyphenate-limit-lines: 2;
-        -moz-hyphenate-limit-last: always;
-        -moz-hyphenate-limit-zone: 8%;
+		-moz-hyphens: auto;
+		-moz-hyphenate-limit-chars: 6 3 3;
+		-moz-hyphenate-limit-lines: 2;
+		-moz-hyphenate-limit-last: always;
+		-moz-hyphenate-limit-zone: 8%;
 
-        -ms-hyphens: auto;
-        -ms-hyphenate-limit-chars: 6 3 3;
-        -ms-hyphenate-limit-lines: 2;
-        -ms-hyphenate-limit-last: always;
-        -ms-hyphenate-limit-zone: 8%;
+		-ms-hyphens: auto;
+		-ms-hyphenate-limit-chars: 6 3 3;
+		-ms-hyphenate-limit-lines: 2;
+		-ms-hyphenate-limit-last: always;
+		-ms-hyphenate-limit-zone: 8%;
 
-        hyphens: auto;
-        hyphenate-limit-chars: 6 3 3;
-        hyphenate-limit-lines: 2;
-        hyphenate-limit-last: always;
-        hyphenate-limit-zone: 8%;
-        text-align: justify;
-    }
+		hyphens: auto;
+		hyphenate-limit-chars: 6 3 3;
+		hyphenate-limit-lines: 2;
+		hyphenate-limit-last: always;
+		hyphenate-limit-zone: 8%;
+		text-align: justify;
+	}
 
 aside {
-    flex: 0 0 100%;
-    margin-bottom: 3rem;
-    order: -1;
+	flex: 0 0 100%;
+	margin-bottom: 3rem;
+	order: -1;
 }
 
-    aside ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+	aside ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
-    aside li {
-        display: block;
-        position: relative;
-        margin: 0;
-    }
+	aside li {
+		display: block;
+		position: relative;
+		margin: 0;
+	}
 
-    /* @@ Add active state with JS? */
-    aside a {
-        display: block;
-        padding: 1rem 0 2.6rem;
-    }
+	/* @@ Add active state with JS? */
+	aside a {
+		display: block;
+		padding: 1rem 0 2.6rem;
+	}
 
-    aside small {
-        display: block;
-        padding-left: 1rem;
-        pointer-events: none;
-        position: absolute;
-        top: 2.6rem;
-    }
-
-footer {
-    background-color: var(--purple-new);
-    color: rgba(var(--white-rgb), 0.80);
-    padding: var(--pad);
-    text-align: center;
-}
-
-    footer a {
-        color: var(--white);
-        text-decoration: underline 1px dotted rgba(var(--white-rgb), 0.5);
-    }
+	aside small {
+		display: block;
+		padding-left: 1rem;
+		pointer-events: none;
+		position: absolute;
+		top: 2.6rem;
+	}
 
 @media (min-width: 768px) {
-    h2 {
-        margin-left: -3rem;
-        margin-right: -3rem;
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
+	h2 {
+		margin-left: -3rem;
+		margin-right: -3rem;
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
 
-    #page {
-        flex-wrap: nowrap;
-        gap: 3rem;
-        padding: 6rem 1rem;
-    }
+	#page {
+		flex-wrap: nowrap;
+		gap: 3rem;
+		padding: 6rem 1rem;
+	}
 
-    main {
-        flex: 1;
-    }
+	main {
+		flex: 1;
+	}
 
-    figure img {
-        border-left-width: 2px;
-        border-right-width: 2px;
-        margin: 0 -3rem;
-        max-width: calc(100% + 6rem);
-        width: calc(100% + 6rem);
-    }
+	figure img {
+		border-left-width: 2px;
+		border-right-width: 2px;
+		margin: 0 -3rem;
+		max-width: calc(100% + 6rem);
+		width: calc(100% + 6rem);
+	}
 
-    aside {
-        flex: 0 0 30%;
-        margin-bottom: 0;
-    }
+	aside {
+		flex: 0 0 30%;
+		margin-bottom: 0;
+	}
 
-        aside ul {
-            font-size: 1.2rem;
-            position: sticky;
-            top: 0;
-        }
+		aside ul {
+			font-size: 1.2rem;
+			position: sticky;
+			top: 0;
+		}
 }
 
 @media (min-width: 1024px) {
-    #page {
-        padding: 6rem 0;
-    }
+	#page {
+		padding: 6rem 0;
+	}
 }

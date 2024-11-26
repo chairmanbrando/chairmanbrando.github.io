@@ -1,152 +1,157 @@
 :root {
-    --purps: #412e54;
-    --purpm: #62467f;
-    --purpl: #835da9;
-    --purpb: #c5b4d7;
-    --mags:  #f0f
+	--purps: #412e54;
+	--purpm: #62467f;
+	--purpl: #835da9;
+	--purpb: #c5b4d7;
+	--mags:  #f0f
 }
 
 @font-face {
-    font-display: swap;
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../assets/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
+	font-display: swap;
+	font-family: 'Fira Code';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../assets/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../assets/fonts/fira-code-v21-latin-700.woff2') format('woff2');
+	font-display: swap;
+	font-family: 'Fira Code';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../assets/fonts/fira-code-v21-latin-700.woff2') format('woff2');
 }
 
 :where(:root) {
-    --green: #adff2f;
-    --pink: #c58bfe;
-    --magenta: #d0d;
-    --olive: #41542e;
-    --purple-old: #412e54;
-    --purple-new: #56488f;
-    --purple-dark: #271c33;
-    --purple-light: #c08ff2;
-    --white: #fffff1;
-    --white-rgb: 255, 255, 241;
+	--green: #adff2f;
+	--pink: #c58bfe;
+	--magenta: #d0d;
+	--olive: #41542e;
+	--purple-old: #412e54;
+	--purple-new: #56488f;
+	--purple-dark: #271c33;
+	--purple-light: #c08ff2;
+	--white: #fffff1;
+	--white-rgb: 255, 255, 241;
 
-    /* @@ Hook this up in all the places. */
-    --pad: 1.5rem;
+	/* @@ Hook this up in all the places. */
+	--pad: 1.5rem;
 }
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--purps);
-    color: var(--white);
-    font-family: 'Fira Code', Monaco, Consolas, monospace;
-    min-height: 100vh;
-    scroll-behavior: smooth;
+	background-color: var(--purps);
+	color: var(--white);
+	font-family: 'Fira Code', Monaco, Consolas, monospace;
+	min-height: 100vh;
+	scroll-behavior: smooth;
 
-    &.has-partials {
-        > div {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-    }
+	&.has-partials {
+		> div {
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+		}
+	}
 
-    &.partials-loaded {
-        > div {
-            opacity: 1;
-        }
-    }
+	&.partials-loaded {
+		> div {
+			opacity: 1;
+		}
+	}
 
-    &:not(.simple) {
-        background: url('cubes.png') fixed, linear-gradient(135deg, var(--purpl) -20%, var(--purps) 86%);
-    }
+	&:not(.simple) {
+		background: url('cubes.png') fixed, linear-gradient(135deg, var(--purpl) -20%, var(--purps) 86%);
+	}
+
+	&.dark-on-light {
+		background-color: var(--white);
+		color: var(--purple-dark);
+	}
 }
 
 a {
-    color: var(--mags);
-    text-decoration: underline;
-    transition: color 0.33s;
+	color: var(--mags);
+	text-decoration: underline;
+	transition: color 0.33s;
 
-    &:hover {
-        color: #fff;
-    }
+	&:hover {
+		color: var(--green);
+	}
 }
 
 button {
-    background: var(--purpb);
-    border: 0;
-    padding: 0;
+	background: var(--purpb);
+	border: 0;
+	padding: 0;
 
-    a {
-        color: var(--purps);
-        display: block;
-        font-weight: bold;
-        padding: 1em 2.25em;
-        text-decoration: none;
+	a {
+		color: var(--purps);
+		display: block;
+		font-weight: bold;
+		padding: 1em 2.25em;
+		text-decoration: none;
 
-        &:hover {
-            color: var(--purpl);
-        }
-    }
+		&:hover {
+			color: var(--purpl);
+		}
+	}
 }
 
 img {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 form label {
-    display: block;
-    margin: 1rem 0 0.5rem;
-    text-align: center;
+	display: block;
+	margin: 1rem 0 0.5rem;
+	text-align: center;
 }
 
 form input[type="text"] {
-    border: 1px solid #dcd;
-    border-radius: 3px;
-    background: transparent;
-    color: #fff;
-    font-family: Monaco, Consolas, monospace;
-    font-size: 1.5rem;
-    max-width: 22em !important;
-    padding: 0.25em 0.5em;
-    text-align: center;
-    width: 100%;
+	border: 1px solid #dcd;
+	border-radius: 3px;
+	background: transparent;
+	color: #fff;
+	font-family: Monaco, Consolas, monospace;
+	font-size: 1.5rem;
+	max-width: 22em !important;
+	padding: 0.25em 0.5em;
+	text-align: center;
+	width: 100%;
 }
 
 #page {
-    padding: 2rem 1rem;
-    position: relative;
+	padding: 2rem 1rem;
+	position: relative;
 }
 
-    @media (min-width: 768px) {
-        #page {
-            padding: 6rem;
-        }
+	@media (min-width: 768px) {
+		#page {
+			padding: 6rem;
+		}
 
-        /*
-        #page > :not(br) {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        */
-    }
+		/*
+		#page > :not(br) {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		*/
+	}
 
-    .inner {
-        background-color: #fff;
-        color: var(--purps);
-        padding: 2rem;
+	.inner {
+		background-color: #fff;
+		color: var(--purps);
+		padding: 2rem;
 
-        :first-child {
-            margin-top: 0;
-        }
+		:first-child {
+			margin-top: 0;
+		}
 
-        :last-child {
-            margin-bottom: 0;
-        }
-    }
+		:last-child {
+			margin-bottom: 0;
+		}
+	}
