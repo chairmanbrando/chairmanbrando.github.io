@@ -1,0 +1,20 @@
+#page {
+    text-align: center;
+}
+
+form {
+    textarea {
+        background: rgba(var(--white-rgb), 0.75);
+        color: var(--purple-old);
+        min-height: 225px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    #page > * {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 40rem;
+    }
+}
