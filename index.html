@@ -12,6 +12,7 @@
 			font-family: Monaco, Consolas, monospace;
 		}
 		#page {
+			min-height: 100vh;
 			padding: 2rem 1rem;
 			position: relative;
 			text-align: center;
@@ -31,7 +32,12 @@
 </head>
 <body>
 	<div id="page">
-		<p>This space intentionally left blank.</p>
+		<p>You know, it might be funny if I sent you right back to Bluesky...</p>
 	</div>
+    <script>
+        setTimeout(() => {
+            window.location.href = 'https://bsky.app/profile/chairmanbrando.github.io';
+        }, 3000);
+    </script>
 </body>
 </html>
