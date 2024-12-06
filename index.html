@@ -3,36 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>chairmanbrando's Blank Site</title>
+	<title>@chairmanbrando's Semi-Blank Site</title>
 	<link href="https://unpkg.com/sanitize.css" rel="stylesheet">
-	<style>
-		body {
-			background: #412e54;
-			color: #dcd;
-			font-family: Monaco, Consolas, monospace;
-		}
-		#page {
-			min-height: 100vh;
-			padding: 2rem 1rem;
-			position: relative;
-			text-align: center;
-		}
-		@media (min-width: 768px) {
-			#page > * {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				max-width: 60rem;
-			}
-		}
-		a {
-			color: #ece;
-		}
-	</style>
+	<link href="/style.css" rel="stylesheet">
 </head>
 <body>
 	<div id="page">
-		<p>You know, it might be funny if I sent you right back to Bluesky...</p>
+		<header>
+            <div class="contain">
+                <h1><a href="#"><span>@</span>chairmanbrando</a></h1>
+                <img src="/assets/avatar.png" alt="chairmanbrando's avatar">
+            </div>
+        </header>
+        <main>
+            <section class="top">
+                <div class="contain">
+                    <img src="/assets/m&p.jpg" alt="Two orange cats in the window sill" title="Meow!">
+                </div>
+            </section>
+            <section class="bottom">
+                <div class="contain">
+                    <p style="text-align: center">You know, it might be funny if I sent you right back to Bluesky...</p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="contain">
+                <ul>
+                    <!-- <li><a href="/resume/">Resume</a></li> -->
+                    <li><a href="/password/">Password</a></li>
+                    <li><a href="/charz/">Charz</a></li>
+                    <li><a href="/radar/">Radar</a></li>
+                    <!-- <li><a href="/sale/">$$$</a></li> -->
+                    <li><a href="/hovery/">Easy Game</a></li>
+                    <li><a href="/screensaver/?n=5">Screensaver</a></li>
+                </ul>
+            </div>
+        </footer>
 	</div>
     <script>
         setTimeout(() => {
