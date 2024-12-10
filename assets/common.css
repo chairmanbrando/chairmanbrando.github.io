@@ -23,16 +23,19 @@
 }
 
 :where(:root) {
-	--green: #adff2f;
-	--pink: #c58bfe;
-	--magenta: #d0d;
-	--olive: #41542e;
-	--purple-old: #412e54;
-	--purple-new: #56488f;
-	--purple-dark: #271c33;
+	--beige:        #f3f3e9;
+	--beige2:       #f5f5dc;
+	--beige3:       #ececda;
+	--green:        #adff2f;
+	--pink:         #c58bfe;
+	--magenta:      #d0d;
+	--olive:        #41542e;
+	--purple-old:   #412e54;
+	--purple-new:   #56488f;
+	--purple-dark:  #271c33;
 	--purple-light: #c08ff2;
-	--white: #fffff1;
-	--white-rgb: 255, 255, 241;
+	--white:        #fffff1;
+	--white-rgb:    255, 255, 241;
 
 	/* @@ Hook this up in all the places. */
 	--pad: 1.5rem;
@@ -114,7 +117,7 @@ form input[type="text"] {
 	border: 1px solid #dcd;
 	border-radius: 3px;
 	background: transparent;
-	color: #fff;
+	color: var(--white);
 	font-family: Monaco, Consolas, monospace;
 	font-size: 1.5rem;
 	max-width: 22em !important;
@@ -143,7 +146,7 @@ form input[type="text"] {
 	}
 
 	.inner {
-		background-color: #fff;
+		background-color: var(--white);
 		color: var(--purps);
 		padding: 2rem;
 

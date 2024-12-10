@@ -1,6 +1,5 @@
 :root {
-    --beige:  #f3f3e9;
-    --beigex:  #e5e5dc;
+    --beige:  #ececda;
     --purple: #412e54;
     --white:  #fffff1;
 }
@@ -53,6 +52,7 @@ header {
 
     img {
         border-radius: 50px;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
         max-width: 50px;
     }
 }

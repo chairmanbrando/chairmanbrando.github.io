@@ -11,7 +11,7 @@ body:not(.windowed) {
 
 #canvas {
 	background: #222;
-	color: #fff;
+	color: var(--white);
 }
 
 #legend {

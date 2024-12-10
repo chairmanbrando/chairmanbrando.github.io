@@ -16,7 +16,7 @@ img {
 
 hr {
 	border: 0;
-	border-bottom: 10px solid #fff;
+	border-bottom: 10px solid var(--white);
 	margin: 3rem 0;
 	mix-blend-mode: overlay;
 }
