@@ -30,8 +30,8 @@
 		const $out = document.querySelector('#output');
 
 		const charz = {
-			find:    ['©',      '®',     '™',       '‘',  '’',  '“', '”', '•',      '–', '—',  '…',   '·',        '  ', "\r\n", "\r", '′',  '″'],
-			replace: ['&copy;', '&reg;', '&trade;', '\'', '\'', '"', '"', '&bull;', '-', '--', '...', '&middot;', ' ',  "\n",   "\n", '\'', '"']
+			find:    ['©',      '®',     '™',       '‘',  '’',  '“', '”', '•',      '–', '—',  '…',   '·',        "\r\n", "\r", '′',  '″'],
+			replace: ['&copy;', '&reg;', '&trade;', '\'', '\'', '"', '"', '&bull;', '-', '--', '...', '&middot;', "\n",   "\n", '\'', '"']
 		}
 
 		// These are impossible to truly align due to lacking font support. 🙃
@@ -69,16 +69,17 @@
 			return string;
 		}
 
-		// Let's get this dorodango rolling
+		// Let's get this dorodango rolling.
 		domReady(function () {
 			$in.addEventListener('click', (e) => {
 				e.target.select();
 			});
 
 			$in.addEventListener('input', (e) => {
-				let fixme;
+				let fixme = e.target.value;
 
-				fixme = replaceArray(e.target.value, charz.find, charz.replace);
+                fixme = fixme.replaceAll(/  +/g, ' ');
+				fixme = replaceArray(fixme, charz.find, charz.replace);
 				fixme = replaceArray(fixme, ligs.find, ligs.replace);
 
 				$out.value = fixme;
@@ -87,8 +88,6 @@
 			$out.addEventListener('click', (e) => {
 				copy(e.target);
 			});
-
-			// on both click, highlight all and copy
 		});
 	</script>
 </body>
