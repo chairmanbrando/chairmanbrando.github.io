@@ -1,11 +1,13 @@
 :root {
     --beige:  #ececda;
+    --green:  #adff2f;
+    --mags:   #a8008a;
     --purple: #412e54;
     --white:  #fffff1;
 }
 
 body {
-    background-color: var(--white);
+    background: fixed var(--white) url('/assets/m&p.jpg') no-repeat 50% 50% / cover;
     color: var(--purple);
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -22,39 +24,8 @@ p {
     }
 }
 
-header,
-footer {
-    background-color: var(--purple);
-    color: var(--white);
-    padding: 1rem 2rem;
-
-    a {
-        color: var(--white);
-        text-decoration: none;
-    }
-}
-
-header {
-    .contain {
-        align-items: center;
-        display: flex;
-        justify-content: space-between
-    }
-
-    h1 {
-        font-size: clamp(1.25rem, 0.9741rem + 1.3793vw, 1.75rem);
-        margin: 0;
-
-        span {
-            font-size: 75%;
-        }
-    }
-
-    img {
-        border-radius: 50px;
-        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
-        max-width: 50px;
-    }
+a {
+    transition: color 0.25s ease-in-out;
 }
 
 main {
@@ -79,7 +50,54 @@ main {
 }
 
 footer {
+    align-items: center;
+    background-color: var(--purple);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
     text-align: center;
+
+    @media (min-width: 920px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    h1 {
+        font-size: inherit;
+        font-weight: inherit;
+        margin: 0;
+
+        span {
+            font-size: 75%;
+        }
+    }
+
+    a {
+        color: var(--white);
+        position: relative;
+        text-decoration: none;
+
+        &::after {
+            background-color: var(--mags);
+            bottom: 0;
+            content: '';
+            height: 1px;
+            left: 0;
+            position: absolute;
+            transition: width 0.25s ease-in-out;
+            width: 0%;
+        }
+
+        &:hover {
+            color: var(--mags);
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
 
     ul {
         list-style: none;
@@ -99,6 +117,12 @@ footer {
             }
         }
     }
+
+    img {
+        border-radius: 50px;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+        max-width: 50px;
+    }
 }
 
 .contain {
@@ -107,6 +131,7 @@ footer {
 }
 
 #page {
+    backdrop-filter: blur(1px) sepia(50%);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
