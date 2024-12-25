@@ -14,81 +14,20 @@
 <body class="has-partials">
 	<div class="partial" data-partial="../parts/header.html"></div>
 	<div id="page">
-		<p>Got some ugly charz on your clipboard? Fix 'em here. Clicking the output textarea will put the result on your clipboard for you.</p>
+		<p>Got some ugly charz on your clipboard? Fix 'em here. Clicking the output textarea will put the result on your clipboard for you. Oh, it also decodes URLs in case that's needed. 🤷‍♀️</p>
 		<form>
 			<label for="input">Input:</label>
 			<textarea id="input" name="input" placeholder="Paste yo' stuff here..."></textarea>
+			<span class="count"></span>
 			<label for="output">Output:</label>
 			<textarea id="output" name="output" placeholder="...and it'll come out here."></textarea>
+			<span class="count"></span>
 		</form>
+		<div class="spacer" style="height: 50px"></div>
 		<p>Characters: “ ” ‘ ’ © ® ™ • · … – — ′ ″</p>
 		<p>Ligatures: Ꜳ ꜳ Æ æ Ꜵ ꜵ Ꜷ ꜷ Ꜹ ꜹ Ꜻ ꜻ Ꜽ ꜽ 🙰 ﬀ ﬃ ﬄ  ﬁ ﬂ Ƕ ƕ ℔ Ỻ ỻ Œ œ Ꝏ ꝏ ꭢ ẞ ß ﬆ ﬅ Ꜩ ꜩ ᵫ ꭣ Ꝡ ꝡ Ꟗ ꟗ ꟕ ꟓ</p>
 	</div>
 	<div class="partial" data-partial="../parts/footer.html"></div>
-	<script>
-		const $in  = document.querySelector('#input');
-		const $out = document.querySelector('#output');
-
-		const charz = {
-			find:    ['©',      '®',     '™',       '‘',  '’',  '“', '”', '•',      '–', '—',  '…',   '·',        "\r\n", "\r", '′',  '″'],
-			replace: ['&copy;', '&reg;', '&trade;', '\'', '\'', '"', '"', '&bull;', '-', '--', '...', '&middot;', "\n",   "\n", '\'', '"']
-		}
-
-		// These are impossible to truly align due to lacking font support. 🙃
-		const ligs = {
-			find:    ['Ꜳ', 'ꜳ', 'Æ',  'æ',  'Ꜵ', 'ꜵ',  'Ꜷ', 'ꜷ', 'Ꜹ', 'ꜹ',  'Ꜻ',  'ꜻ', 'Ꜽ',  'ꜽ', '🙰',  'ﬀ',  'ﬃ',  'ﬄ',   'ﬁ',  'ﬂ', 'Ƕ',  'ƕ',  '℔',  'Ỻ',  'ỻ',  'Œ',  'œ',  'Ꝏ', 'ꝏ', 'ꭢ',  'ẞ',  'ß',  'ﬆ',  'ﬅ',  'Ꜩ', 'ꜩ',  'ᵫ',  'ꭣ',  'Ꝡ', 'ꝡ',  'Ꟗ ꟗ', 'ꟕ',  'ꟓ'],
-			replace: ['AA', 'aa', 'AE', 'ae', 'AO', 'ao', 'AU', 'au', 'AV', 'av', 'AV', 'av', 'AY', 'ay', 'et', 'f‌f', 'f‌f‌i', 'f‌f‌l', 'f‌i', 'f‌l', 'Hv', 'hv', 'lb', 'lL', 'll', 'OE', 'oe', 'OO', 'oo', 'ɔe', 'ſs', 'ſz', 'st', 'ſt', 'TZ', 'tz', 'ue', 'uo', 'VY', 'vy', 'ſs',  'ƿƿ', 'þþ',]
-		};
-
-		const domReady = function (fn) {
-			(document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', fn) : fn();
-		}
-
-		// To the clipboard we go!
-		const copy = function (elem) {
-			try {
-				elem.select();
-				navigator.clipboard.writeText(elem.value);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		// Swiped: https://stackoverflow.com/a/37949642
-		const replaceArray = function (string, finds, replaces) {
-			let i, regex = [], map = {};
-
-			for (i = 0; i < finds.length; i++) {
-				regex.push(finds[i].replace(/([-[\]{}()*+?.\\^$|#,])/g,'\\$1'));
-				map[finds[i]] = replaces[i];
-			}
-
-			regex  = regex.join('|');
-			string = string.replace(new RegExp(regex, 'g'), (matched) => map[matched]);
-
-			return string;
-		}
-
-		// Let's get this dorodango rolling.
-		domReady(function () {
-			$in.addEventListener('click', (e) => {
-				e.target.select();
-			});
-
-			$in.addEventListener('input', (e) => {
-				let fixme = e.target.value;
-
-                fixme = fixme.replaceAll(/  +/g, ' ');
-				fixme = replaceArray(fixme, charz.find, charz.replace);
-				fixme = replaceArray(fixme, ligs.find, ligs.replace);
-
-				$out.value = fixme;
-			});
-
-			$out.addEventListener('click', (e) => {
-				copy(e.target);
-			});
-		});
-	</script>
+	<script src="./script.js"></script>
 </body>
 </html>

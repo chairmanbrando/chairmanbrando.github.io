@@ -3,11 +3,18 @@
 }
 
 form {
+    position: relative;
+
     textarea {
         background: rgba(var(--white-rgb), 0.75);
         color: var(--purple-old);
         min-height: 225px;
         width: 100%;
+    }
+
+    .count {
+        left: calc(100% + 1em);
+        position: absolute;
     }
 }
 
