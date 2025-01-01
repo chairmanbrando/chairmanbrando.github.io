@@ -2,6 +2,7 @@
     --beige:  #ececda;
     --green:  #adff2f;
     --mags:   #a8008a;
+    --purpel: #56488f;
     --purple: #412e54;
     --white:  #fffff1;
 }
@@ -30,6 +31,12 @@ a {
 
 main {
     flex: 1;
+    min-height: 420px;
+
+    &:has(section.contain) {
+        align-items: center;
+        display: flex;
+    }
 
     section {
         padding: 3rem 0;
@@ -52,6 +59,7 @@ main {
 footer {
     align-items: center;
     background-color: var(--purple);
+    background: linear-gradient(135deg, var(--purpel), var(--purple));
     color: var(--white);
     display: flex;
     flex-direction: column;
@@ -135,4 +143,22 @@ footer {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
+}
+
+u.ua {
+    font-size: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+
+    &::before {
+        border-bottom: 20px solid #FFD800;
+        border-top: 20px solid #0056B9;
+        content: '';
+        display: block;
+        transform: translateX(50%) rotate(45deg);
+        width: 300px;
+    }
 }
