@@ -1,0 +1,54 @@
+body {
+    align-items: center;
+    background: #1c1b22;
+    color: #fbfbfe;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+a {
+    color: #8b7fbe;
+}
+
+del {
+    opacity: 0.6;
+}
+
+#page {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* If this is all banded in Firefox, use Chrome for it instead. */
+#thing {
+    align-items: center;
+    background: linear-gradient(135deg, #56488f, #412e54);
+    display: flex;
+    font-family: "Fira Mono", serif;
+    font-weight: 500;
+    font-size: 40px;
+    font-style: normal;
+    justify-content: center;
+    letter-spacing: -0.075em;
+    line-height: 1.2;
+    padding: 2rem;
+    text-align: center;
+    width: 600px;
+    height: 600px;
+}
+
+form {
+    margin: 1rem 0;
+
+    .field {
+        align-items: center;
+        display: flex;
+        gap: 1em;
+        padding: 0.5rem 0;
+    }
+
+    input {
+        flex-grow: 1;
+    }
+}

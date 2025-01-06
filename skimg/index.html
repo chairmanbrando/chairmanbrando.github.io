@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skeet Imager &mdash; Make it, screenshot it, post it.</title>
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <main id="page">
+        <p>Note that Firefox has issues with dithering, so gradients, even those in images, show very obvious banding when the colors are relatively close to one another. This has been <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=627771" target="_blank">a reported bug since 2011</a>, so don't expect it to be fixed. Use another browser to make your skimages instead. 🙄</p>
+        <form action="">
+            <div class="field">
+                <label for="text">Text:</label>
+                <input id="text" type="text" value="Your text here." autofocus>
+            </div>
+            <div class="field">
+                <label for="font">Font:</label>
+                <input id="font" type="text" value="Fira Mono">
+            </div>
+            <div class="field">
+                <label for="size">Text size:</label>
+                <input id="size" type="range" value="40" min="16" max="64" step="1">
+            </div>
+            <div class="field">
+                <label for="spac">Letter spacing:</label>
+                <input id="spac" type="range" value="-0.075" min="-0.1" max="0.1" step="0.005">
+            </div>
+            <div class="field">
+                <label for="line">Line height:</label>
+                <input id="line" type="range" value="1.2" min="0.8" max="1.6" step="0.1">
+            </div>
+            <div class="field">
+                <label for="back">Background:</label>
+                <input id="back" type="text" value="linear-gradient(135deg, #56488f, #412e54)">
+            </div>
+        </form>
+        <div id="thing">
+            <span>Testing</span>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
