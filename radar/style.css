@@ -54,3 +54,23 @@ hr {
 	#radar p {
 		margin-top: 0;
 	}
+
+#willy {
+	bottom: 25px;
+	overflow: hidden;
+	position: absolute;
+	right: 10px;
+
+	iframe {
+		display: block;
+	}
+
+	a {
+		margin: -20px 0 0 0;
+		display: block;
+		height: 20px;
+		position: relative;
+		text-indent: 100%;
+		z-index: 1;
+	}
+}

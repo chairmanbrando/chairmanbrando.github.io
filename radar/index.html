@@ -12,15 +12,19 @@
 <body>
 	<div id="page">
 		<!-- This is an option, and certainly nicer than weather.gov, but the point was *not* to load heavy stuff! -->
+
 		<div class="iframe-wrapper">
 			<iframe width="1200" height="750" src="https://embed.windy.com/embed2.html?lat=37.675&lon=-77.959&detailLat=37.614&detailLon=-77.388&width=1200&height=750&zoom=9&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1" frameborder="0"></iframe>
 		</div>
 
+		<div id="willy" style="width: 228px">
+			<iframe src="https://cdnres.willyweather.com/widget/loadView.html?id=156078" width="228" height="228" frameborder="0" scrolling="no"></iframe>
+			<a href="https://www.willyweather.com/va/henrico-county/ridgefield-green.html" target="_blank" rel="nofollow">https://www.willyweather.com/va/henrico-county/ridgefield-green.html</a>
+		</div>
+
 		<!--
 		<hr>
-
 		<p>Yes, these government things are fugly. But Wunderground's GIF-based radars stopped being updated on or after Nov 6, 2023, so these will have to do for now.</p>
-
 		<a href="https://radar.weather.gov/station/kakq/standard">
 			<img data-src="https://radar.weather.gov/ridge/standard/KAKQ_loop.gif" alt="KAKQ_loop.gif">
 		</a>
@@ -33,9 +37,7 @@
 		<a href="https://radar.weather.gov/region/conus/standard">
 			<img data-src="https://radar.weather.gov/ridge/standard/CONUS_loop.gif" alt="CONUS_loop.gif">
 		</a>
-
 		<hr>
-
 		<div id="radar">
 			<p>These don't line up like I was hoping they would, because nothing can actually be cool in this world, but it <em>kinda</em> works, I guess...</p>
 			<img data-src="https://radar.weather.gov/ridge/standard/KRLX_loop.gif" alt="KRLX_loop.gif">
