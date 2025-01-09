@@ -18,6 +18,7 @@
                         <h1>❦ <strong>chairmanbrando</strong></h1>
                         <ul class="flat">
                             <li>Richmond, VA</li>
+                            <li><a href="#email">Email</a></li>
                             <li><a href="/resume/">Resume</a></li>
                             <li><a href="https://bsky.app/profile/chairmanbrando.github.io">Bluesky</a></li>
                             <li><a href="https://github.com/chairmanbrando/">GitHub</a></li>
@@ -39,5 +40,11 @@
         </main>
 	</div>
     <u class="ua">🇺🇦</u>
+    <script>
+        document.querySelector('a[href="#email"]').addEventListener('click', (e) => {
+            alert('Sorry for the annoyance, but it\'s my silly username at proton.me!');
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

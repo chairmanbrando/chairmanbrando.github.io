@@ -38,7 +38,11 @@ p {
 
 a {
     color: var(--lavender);
-    transition: color 0.25s ease-in-out;
+    /* transition: color 0.25s ease-in-out; */
+
+    &:visited {
+        color: color-mix(in srgb, var(--lavender), var(--magenta));
+    }
 
     &:hover {
         color: var(--magenta);
@@ -163,7 +167,7 @@ footer {
         text-decoration: none;
 
         &::after {
-            background-color: var(--mags);
+            background-color: var(--magenta);
             bottom: 0;
             content: '';
             height: 1px;
@@ -174,7 +178,7 @@ footer {
         }
 
         &:hover {
-            color: var(--mags);
+            color: var(--magenta);
 
             &::after {
                 width: 100%;
