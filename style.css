@@ -38,14 +38,15 @@ p {
 
 a {
     color: var(--lavender);
+    color: magenta;
     /* transition: color 0.25s ease-in-out; */
 
     &:visited {
-        color: color-mix(in srgb, var(--lavender), var(--magenta));
+        color: color-mix(in srgb, black 25%, magenta);
     }
 
     &:hover {
-        color: var(--magenta);
+        color: color-mix(in srgb, black 50%, magenta);
     }
 }
 
