@@ -57,9 +57,11 @@ hr {
 
 #willy {
 	bottom: 25px;
+	font-size: 0.875rem;
 	overflow: hidden;
 	position: absolute;
 	right: 10px;
+	text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
 
 	iframe {
 		display: block;
