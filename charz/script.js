@@ -1,8 +1,3 @@
-const $in   = document.querySelector('#input');
-const $inc  = document.querySelector('#input + .count');
-const $out  = document.querySelector('#output');
-const $outc = document.querySelector('#output + .count');
-
 const charz = {
     find: ['©', '®', '™', '‘', '’', '“', '”', '•', '–', '—', '…', '·', "\r\n", "\r", '′', '″'],
     replace: ['&copy;', '&reg;', '&trade;', '\'', '\'', '"', '"', '&bull;', '-', '--', '...', '&middot;', "\n", "\n", '\'', '"']
@@ -45,6 +40,11 @@ const replaceArray = function (string, finds, replaces) {
 
 // Let's get this dorodango rolling.
 domReady(function () {
+    const $in   = document.querySelector('#input');
+    const $inc  = document.querySelector('#input + .count');
+    const $out  = document.querySelector('#output');
+    const $outc = document.querySelector('#output + .count');
+
     $in.addEventListener('click', (e) => {
         e.target.select();
     });

@@ -1,4 +1,5 @@
 #page {
+    padding: 4rem 0 3rem 0;
     text-align: center;
 }
 
@@ -7,7 +8,7 @@ form {
 
     textarea {
         background: rgba(var(--white-rgb), 0.75);
-        color: var(--purple-old);
+        color: var(--purple);
         min-height: 225px;
         width: 100%;
     }
