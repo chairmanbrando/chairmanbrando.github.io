@@ -134,6 +134,14 @@ main {
                 font-size: 19px;
                 margin: 0;
             }
+
+            .avatar {
+                display: none;
+
+                @media (min-width: 400px) {
+                    display: block;
+                }
+            }
         }
     }
 }
@@ -211,7 +219,8 @@ footer {
 
 .contain {
     margin: 0 auto;
-    max-width: 42em;
+    max-width: 100%;
+    width: 42em;
 }
 
 #page {
@@ -237,3 +246,20 @@ u.ua {
         width: 300px;
     }
 }
+
+u.if {
+    bottom: 0;
+    color: color-mix(in srgb, black 50%, magenta);
+    display: none;
+    font-size: 2rem;
+    left: 0;
+    line-height: 1;
+    position: fixed;
+    rotate: -45deg;
+    text-decoration: none;
+
+    @media (min-width: 600px) {
+        display: block;
+    }
+}
+
