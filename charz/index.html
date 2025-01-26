@@ -13,12 +13,17 @@
 	<div id="page">
 		<p>Got some ugly charz on your clipboard? Fix 'em here. Clicking the output textarea will put the result on your clipboard for you. Oh, it also decodes URLs in case that's needed. 🤷‍♀️</p>
 		<form>
-			<label for="input">Input:</label>
-			<textarea id="input" name="input" placeholder="Paste yo' stuff here..."></textarea>
-			<span class="count"></span>
-			<label for="output">Output:</label>
-			<textarea id="output" name="output" placeholder="...and it'll come out here."></textarea>
-			<span class="count"></span>
+			<div class="field">
+				<label for="input">Input:</label>
+				<textarea id="input" name="input" placeholder="Paste yo' stuff here..."></textarea>
+				<span class="count"></span>
+			</div>
+			<div class="field">
+				<label for="output">Output:</label>
+				<textarea id="output" name="output" placeholder="...and it'll come out here."></textarea>
+				<span class="count"></span>
+				<span class="copied">Copied!</span>
+			</div>
 		</form>
 		<div class="spacer" style="height: 50px"></div>
 		<p>Characters: “ ” ‘ ’ © ® ™ • · … – — ′ ″</p>

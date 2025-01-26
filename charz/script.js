@@ -14,12 +14,16 @@ const domReady = function (fn) {
 }
 
 // To the clipboard we go!
-const copy = function (elem) {
+const copyContentsToClipboard = function (elem) {
+    if (! elem.value) return false;
+
     try {
         elem.select();
         navigator.clipboard.writeText(elem.value);
+
+        return true;
     } catch (e) {
-        console.log(e);
+        return false;
     }
 }
 
@@ -73,10 +77,18 @@ domReady(function () {
     });
 
     $out.addEventListener('click', (e) => {
-        copy(e.target);
+        if (copyContentsToClipboard(e.target)) {
+            e.target.parentElement.querySelector('.copied').style.animationName = 'fadeOut';
+        }
     });
 
-    $out.addEventListener('input', (e)=> {
+    $out.addEventListener('input', (e) => {
         $outc.textContent = e.target.value.length;
+    });
+
+    document.querySelectorAll('.field .copied').forEach((e) => {
+        e.addEventListener('animationend', (e) => {
+            e.target.style.animationName = '';
+        });
     });
 });
