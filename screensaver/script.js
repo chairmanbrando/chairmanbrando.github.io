@@ -28,7 +28,15 @@ function isFullscreen() {
 };
 
 function addSaver(amount) {
-	// @@ Implement.
+	if (amount > 0) {
+		savers.push(saverFactory());
+		savers[savers.length - 1].init();
+	} else {
+		if (savers.length) {
+			const saver = savers.pop();
+			saver.clear();
+		}
+	}
 }
 
 // (1) This is not, like, correct. Simple delta values aren't great to work with
