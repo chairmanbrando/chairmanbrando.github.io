@@ -27,9 +27,24 @@ function isFullscreen() {
 	return (window.innerWidth === screen.width && window.innerHeight === screen.height);
 };
 
-// @@ Going slower is kinda busted. May need to separate speed and velocity.
+function addSaver(amount) {
+	// @@ Implement.
+}
+
+// (1) This is not, like, correct. Simple delta values aren't great to work with
+// vs. using vectors with a direction and magnitude. This whole bit needs to be
+// rewritten into a class. Without vectors I can't make slowing them down make
+// sense, so the only option is to speed them up!
+//
+// (2) Fractional delta values are possible and would alleviate the need to redo
+// things with vectors, but once you're off int pixels, the part that clears
+// behind the savers "misses" slightly due to issues with subpixel rendering.
+// The whole background would have to be cleaned instead, and I'm not sure if
+// that would make performance better or worse...
 function adjustSpeed(amount) {
 	savers.forEach(function (saver) {
+		if (amount === 0) return;
+
 		(saver.dx > 0) ? saver.dx += amount : saver.dx -= amount;
 		(saver.dy > 0) ? saver.dy += amount : saver.dy -= amount;
 	});
@@ -43,11 +58,11 @@ function solitaireMode() {
 
 function saverFactory() {
     return {
-        x: 0,
-        y: 0,
-        dx: randInt(2, 6),
-        dy: randInt(2, 6),
-        img: new Image,
+        x:     0,
+        y:     0,
+        dx:    randInt(2, 6),
+        dy:    randInt(2, 6),
+        img:   new Image,
         trail: false,
 
         init: function () {
@@ -64,7 +79,7 @@ function saverFactory() {
 
         clear: function () {
             if (! this.trail) {
-                ctx.clearRect(this.x, this.y, this.img.width, this.img.height);
+                ctx.fillRect(this.x, this.y, this.img.width, this.img.height);
             }
         },
 
@@ -99,8 +114,9 @@ function init() {
 
     canvas.width  = page.offsetWidth;
     canvas.height = page.offsetHeight;
+	ctx.fillStyle = '#222'; // Filling is allegedly faster than clearing.
 
-	let num = parseInt(getQueryVars().n) || 1;
+	let num = parseInt(getQueryVars().n) || randInt(2, 6);
 
 	for (let i = 0; i < num; i++) {
 		savers.push(saverFactory());
@@ -142,12 +158,18 @@ onDomEvent('keyup', function (e) {
 			break;
 		case '+':
 		case '=':
-			adjustSpeed(1);
+			addSaver(1);
 			break;
 		case '-':
 		case '_':
-			adjustSpeed(-1);
+			addSaver(-1);
 			break;
+		case 'ArrowUp':
+			adjustSpeed(1);
+			break;
+		// case 'ArrowDown':
+		// 	adjustSpeed(-1);
+		// 	break;
 		case 's':
 			solitaireMode();
 			break;
