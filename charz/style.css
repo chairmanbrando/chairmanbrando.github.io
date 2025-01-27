@@ -36,6 +36,7 @@ form {
         bottom: -1.5rem;
         left: 50%;
         opacity: 0;
+        pointer-events: none;
         position: absolute;
         translate: -50%;
     }
