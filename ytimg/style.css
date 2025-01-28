@@ -1,0 +1,29 @@
+#page {
+    justify-content: center;
+    padding: 4rem 0 3rem 0;
+    text-align: center;
+}
+
+h1 + h3 {
+    margin-top: -1.5rem;
+}
+
+.contain {
+    width: 60em;
+}
+
+form {
+    input[type="url"] {
+        min-width: 226px;
+    }
+}
+
+img {
+    display: block;
+    margin: 1rem auto;
+}
+
+span.name {
+    display: block;
+    margin-bottom: -0.5rem;
+}

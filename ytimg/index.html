@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <main id="page">
+        <section class="contain">
+            <h1>Get YouTube Thumbnails</h1>
+            <h3>Like, all of them.</h3>
+            <p>YouTube offers up five resolutions of thumbnail images and (up to) four thumbnails per video. Drop a URL or video ID into the form to (try to) fetch them.</p>
+            <form id="form" action="">
+                <input type="text" id="video" value="" placeholder="YouTube video URL or ID">
+                <input type="submit" value="Go">
+            </form>
+        </section>
+        <section id="output" class="contain"></section>
+        <template id="template">
+            <span class="name"></span>
+            <a class="link" href="" download="" target="_blank">
+                <img class="image" src="" alt="">
+            </a>
+        </template>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
