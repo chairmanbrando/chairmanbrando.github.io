@@ -121,7 +121,6 @@ aside {
 		margin: 0;
 	}
 
-	/* @@ Add active state with JS? */
 	aside a {
 		display: block;
 		padding: 1rem 0 2.6rem;
