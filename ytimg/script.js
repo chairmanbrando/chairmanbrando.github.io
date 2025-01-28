@@ -3,7 +3,7 @@ const reses    = ['maxres', 'sd', 'hq', 'mq', ''];
 
 // This is simple enough, but is it *too* simple?
 function looksLikeYouTubeThing(url) {
-    const matches = url.match(/([A-Za-z0-9_-]{11})/);
+    const matches = url.match(/([A-Za-z0-9_\-]{11})/);
 
     if (Array.isArray(matches) && matches.length > 1) {
         return matches[1];

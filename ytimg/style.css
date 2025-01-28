@@ -13,8 +13,12 @@ h1 + h3 {
 }
 
 form {
-    input[type="url"] {
+    input[type="text"] {
         min-width: 226px;
+
+        &:invalid:not(:placeholder-shown) {
+            border: 1px solid red;
+        }
     }
 }
 

@@ -17,7 +17,7 @@
             <h3>Like, all of them.</h3>
             <p>YouTube offers up five resolutions of thumbnail images and (up to) four thumbnails per video. Drop a URL or video ID into the form to (try to) fetch them.</p>
             <form id="form" action="">
-                <input type="text" id="video" value="" placeholder="YouTube video URL or ID">
+                <input type="text" id="video" placeholder="YouTube video URL or ID" pattern="[A-Za-z0-9_\-]{11}" required>
                 <input type="submit" value="Go">
             </form>
         </section>
