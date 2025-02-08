@@ -42,6 +42,7 @@ a {
     color: var(--lavender);
     color: magenta;
     /* transition: color 0.25s ease-in-out; */
+    text-decoration: none;
 
     &:visited {
         color: color-mix(in srgb, black 25%, magenta);
@@ -49,6 +50,7 @@ a {
 
     &:hover {
         color: color-mix(in srgb, black 50%, magenta);
+        text-decoration: underline;
     }
 }
 
@@ -57,12 +59,24 @@ ul {
 
     &.flat {
         display: flex;
-        gap: 1em;
-        justify-content: center;
+        gap: 1.25em;
+        /* justify-content: center; */
         list-style-type: none;
         margin: 0;
         padding: 0;
         white-space: nowrap;
+
+        li {
+            position: relative;
+
+            + li {
+                &::before {
+                    content: '·';
+                    left: -0.875em;
+                    position: absolute;
+                }
+            }
+        }
     }
 }
 
@@ -74,9 +88,9 @@ hr {
 }
 
 .avatar {
-    border-radius: 50px;
+    border-radius: 68px;
     box-shadow: var(--box-shadow);
-    max-width: 50px;
+    max-width: 68px;
 }
 
 main {
@@ -249,11 +263,12 @@ u.ua {
 
 u.if {
     bottom: 0;
-    color: color-mix(in srgb, black 50%, magenta);
+    color: magenta;
     display: none;
     font-size: 2rem;
     left: 0;
     line-height: 1;
+    opacity: 0.19;
     position: fixed;
     rotate: -45deg;
     text-decoration: none;
@@ -277,3 +292,6 @@ u.if {
     }
 }
 
+@keyframes tooltip {
+    /* @@ Have it pop into view, move upward, and fade out. */
+}
