@@ -32,3 +32,12 @@
 div[hidden] {
     display: none;
 }
+
+.ascendancy {
+    text-align: center;
+}
+
+h2:has(+ [hidden] + [hidden] + [hidden]),
+h2:last-of-type:has(+ [hidden]) {
+    display: none;
+}

@@ -1,15 +1,15 @@
 let $classes = null;
 
 function showAllClasses() {
-    $classes.forEach(c => c.style.display = 'block');
+    $classes.forEach(c => c.removeAttribute('hidden'));
 }
 
+// This *can* be done with CSS only by stacking up three sibling selectors in
+// `h2:has()`, but the Scion presents an issue with its one Ascendancy. If some-
+// thing like `h2:all()` existed then this would be more straightforward. Might
+// as well do it via JS, then, I suppose.
 function hideAllClasses() {
-    $classes.forEach(c => c.style.display = 'none');
-}
-
-function hideEmptyHeaders() {
-    // @@ implement
+    $classes.forEach(c => c.setAttribute('hidden', true));
 }
 
 function searchText(text, search) {
@@ -29,12 +29,10 @@ function showRelevantClasses(search) {
         if (! $text) return;
 
         if (searchText($text.textContent, search) > -1) {
-            c.style.display = 'block';
+            c.removeAttribute('hidden');
             ++shown; // @@ implement
         }
     });
-
-    hideEmptyHeaders();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
