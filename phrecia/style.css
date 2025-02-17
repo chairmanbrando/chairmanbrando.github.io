@@ -29,8 +29,8 @@
     }
 }
 
-div[hidden] {
-    display: none;
+[hidden] {
+    display: none !important;
 }
 
 .ascendancy {
