@@ -1,4 +1,4 @@
-const endpoint = 'https://chairmanbrando.wpenginepowered.com/apis/index.php';
+const endpoint = 'https://chairmanbrando.org/apis/index.php';
 
 document.addEventListener('DOMContentLoaded', (e) => {
     const text = document.querySelector('#text');
