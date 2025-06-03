@@ -19,7 +19,8 @@
 }
 
 body {
-    background: var(--dark);
+    background: var(--dark) url('p1.webp');
+    background-attachment: fixed;
     color: var(--white);
     /* font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; */
     font-family: Consolas, 'Fira Code', monospace;
