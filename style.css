@@ -19,7 +19,7 @@
 }
 
 body {
-    background: var(--dark) url('p1.webp');
+    background: var(--dark) url('assets/p1.webp');
     background-attachment: fixed;
     color: var(--white);
     /* font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; */
@@ -243,6 +243,19 @@ footer {
     flex-direction: column;
     min-height: 100vh;
     position: relative;
+
+    &::before {
+        background-attachment: fixed;
+        background-image: url('assets/PIA19048.jpg');
+        background-position: 0 0; /* @@ */
+        background-repeat: no-repeat;
+        content: '';
+        height: 100%;
+        inset: 0;
+        opacity: 0.025;
+        position: absolute;
+        width: 100%;
+    }
 }
 
 u.ua {
