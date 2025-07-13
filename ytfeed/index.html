@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Clean YouTube Feed URLs</title>
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <main id="page">
+        <section class="contain">
+            <h1>Get Clean YouTube Feed URLs</h1>
+            <p><a href="https://chairmanbrando.org/post/187/remove-shorts-from-youtube-rss-feeds">Over on my dumb blog</a> I talked about how I found a way to get a feed URL that didn't include Shorts and streams as the default feed does. Doing it manually is fine and all, but if you have dozens or hundreds of channels in your RSS reader already, you'll want a way to construct these new feed URLs as quickly as possible. This page will hopefully help.</p>
+            <form id="form" action="">
+                <p>We're looking for a YouTube channel URL or ID here:</p>
+                <ul>
+                    <li>https://www.youtube.com/channel/UCNqlKAVi39GeSzAvRdXN7LQ</li>
+                    <li>https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA</li>
+                    <li>UCNqlKAVi39GeSzAvRdXN7LQ</li>
+                    <li>UCHnyfMqiRRG1u-2MsSQLbXA</li>
+                </ul>
+                <p>Username URLs (those with <code>@</code>) won't work until I connect this to the YouTube API (which I won't do).</p>
+                <input type="text" id="channel" placeholder="Channel URL or ID" pattern="(https:\/\/www\.youtube\.com\/channel\/)?(UC[A-Za-z0-9_\-].+)" required>
+                <input type="submit" value="Go">
+            </form>
+        </section>
+        <section id="output" class="contain">
+            Clean RSS feed: <a href="">...</a>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
