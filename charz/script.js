@@ -57,6 +57,8 @@ domReady(function () {
         let fixme = e.target.value;
 
         fixme = fixme.replaceAll(/  +/g, ' ');
+        fixme = fixme.replaceAll(/\[\d{1,3}\]/g, '');
+        fixme = fixme.replaceAll(/\[[a-z]\]/g, '');
         fixme = replaceArray(fixme, charz.find, charz.replace);
         fixme = replaceArray(fixme, ligs.find, ligs.replace);
 
