@@ -71,12 +71,17 @@ domReady(function () {
         }
 
         $out.value = fixme;
-        $out.click();
     });
 
     $in.addEventListener('input', (e) => {
         $inc.textContent = e.target.value.length;
         $out.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+
+    $in.addEventListener('paste', (e) => {
+        setTimeout(() => {
+            $out.click();
+        }, 10);
     });
 
     $out.addEventListener('click', (e) => {
