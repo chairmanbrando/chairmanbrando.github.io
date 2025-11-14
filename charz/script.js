@@ -71,6 +71,7 @@ domReady(function () {
         }
 
         $out.value = fixme;
+        $out.click();
     });
 
     $in.addEventListener('input', (e) => {
