@@ -18,6 +18,7 @@ del {
 #page {
     margin: 0 auto;
     max-width: 600px;
+    padding: 4rem 0;
 }
 
 /* If this is all banded in Firefox, use Chrome for it instead. */
@@ -36,6 +37,10 @@ del {
     text-align: center;
     width: 600px;
     height: 600px;
+
+    span {
+        width: 100%;
+    }
 }
 
 form {
@@ -48,7 +53,26 @@ form {
         padding: 0.5rem 0;
     }
 
+    fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        legend {
+            float: left;
+            margin-right: 1em;
+            padding: 0;
+        }
+    }
+
     input {
         flex-grow: 1;
+
+        &[type="radio"] {
+            + label {
+                margin-right: 1em;
+            }
+        }
     }
 }

@@ -12,36 +12,54 @@
 </head>
 <body>
     <main id="page">
-        <p>Note that Firefox has issues with dithering, so gradients, even those in images, show very obvious banding when the colors are relatively close to one another. This has been <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=627771" target="_blank">a reported bug since 2011</a>, so don't expect it to be fixed. Use another browser to make your skimages instead. 🙄</p>
-        <form action="">
+        <form id="form">
             <div class="field">
                 <label for="text">Text:</label>
-                <input id="text" type="text" value="Your text here." autofocus>
+                <input id="text" type="text" name="text" value="Your text here." autofocus>
             </div>
             <div class="field">
                 <label for="font">Font:</label>
-                <input id="font" type="text" value="Fira Mono">
+                <input id="font" type="text" name="font" value="Fira Mono, Consolas, monospace">
             </div>
             <div class="field">
                 <label for="size">Text size:</label>
-                <input id="size" type="range" value="40" min="16" max="64" step="1">
+                <input id="size" type="range" name="size" value="40" min="16" max="64" step="1">
+            </div>
+            <div class="field">
+                <label for="colo">Text color:</label>
+                <input id="colo" type="color" name="colo">
+            </div>
+            <div class="field">
+                <fieldset>
+                    <legend>Text alignment:</legend>
+                    <input id="tale" type="radio" name="talign" value="left"> <label for="tale">Left</label>
+                    <input id="taju" type="radio" name="talign" value="justify"> <label for="taju">Justified</label>
+                    <input id="tace" type="radio" name="talign" value="center" checked> <label for="tace">Center</label>
+                    <input id="tari" type="radio" name="talign" value="right"> <label for="tari">Right</label>
+                </fieldset>
             </div>
             <div class="field">
                 <label for="spac">Letter spacing:</label>
-                <input id="spac" type="range" value="-0.075" min="-0.1" max="0.1" step="0.005">
+                <input id="spac" type="range" name="spac" value="-0.025" min="-0.1" max="0.1" step="0.005">
             </div>
             <div class="field">
                 <label for="line">Line height:</label>
-                <input id="line" type="range" value="1.2" min="0.8" max="1.6" step="0.1">
+                <input id="line" type="range" name="line" value="1.2" min="0.8" max="1.6" step="0.1">
+            </div>
+            <div class="field">
+                <label for="shad">Text shadow:</label>
+                <input id="shad" type="text" name="shad" value="1px 1px rgba(0,0,0, 0.42)">
             </div>
             <div class="field">
                 <label for="back">Background:</label>
-                <input id="back" type="text" value="linear-gradient(135deg, #56488f, #412e54)">
+                <input id="back" type="text" name="back" value="linear-gradient(135deg, #a855f7 10%, #10ffb1)">
             </div>
         </form>
         <div id="thing">
-            <span>Testing</span>
+            <span></span>
         </div>
+        <p>If you're looking for a save or download button, there ain't one. Just screenshot the result and crop it!</p>
+        <p>Fun tidbit: This page previously had a warning at the top about Firefox having issues with dithering gradients, causing very obvious banding between colors that are relatively close to one another. The <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=627771">bug report about it</a> had been opened all the way back in 2011. This was an entirely different world ago, back when there was still hope for the future, so I had no expectations of it being fixed. Some bugs are hard, and sometimes open source makes fixing them even harder. Well, someone(s) did finally fix it toward the end of 2025. Go someone(s)!</p>
     </main>
     <script src="script.js"></script>
 </body>
