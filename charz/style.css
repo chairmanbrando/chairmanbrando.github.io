@@ -1,5 +1,10 @@
 p {
-    font-size: 1rem;
+    /* font-size: 1rem; */
+}
+
+code {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.1em 0.35em;
 }
 
 #page {

@@ -76,12 +76,11 @@ domReady(function () {
     $in.addEventListener('input', (e) => {
         $inc.textContent = e.target.value.length;
         $out.dispatchEvent(new Event('input', { bubbles: true }));
-    });
 
-    $in.addEventListener('paste', (e) => {
-        setTimeout(() => {
-            $out.click();
-        }, 10);
+        // Couldn't catch a `paste` event even on `document` for some reason. 🤷‍♀️
+        if (e.inputType === 'insertFromPaste') {
+            setTimeout(() => $out.click(), 150);
+        }
     });
 
     $out.addEventListener('click', (e) => {
