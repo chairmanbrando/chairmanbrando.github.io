@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Write More Gooder, Yo</title>
+    <link href="/assets/sanitize-13.0.0.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="center">
+        <h1>Write-Good Prose Analyzer</h1>
+        <p>Type or paste text below. It'll be analyzed in your browser by way of the <a href="https://github.com/btford/write-good">write-good</a> module. Yeah, you should probably just use <a href="https://hemingwayapp.com/">Hemingway</a>, but if you don't trust 'em for some reason, you can trust me instead. You won't find any XHRs sneaking off your text or site usage here!</p>
+    </div>
+
+    <div class="container">
+        <div>
+            <h3>Your Text: <span>Type or paste here!</span></h3>
+            <textarea id="input">The Flesch-Kincaid Grade Level basically shows what educational level a person will need in order to understand a particular text. The scores created by the Flesch-Kincaid Grade Level match up to the US grade levels of education readers will need to be able to comprehend a particular text, e.g., if the text has a Flesch-Kincaid Grade Level of 9, to be able to understand the document easily the reader would have had to have undergone around nine years of education (i.e., reached around 9th grade). The Flesch-Kincaid Grade Level is assessed by examining how many words, sentences, and syllables a document contains, employing the equation below.</textarea>
+        </div>
+        <div>
+            <h3>Live Analysis: <span>Hover marks for details!</span></h3>
+            <div id="output" class="output"></div>
+        </div>
+    </div>
+
+    <div class="center">
+        <h3>List of Issues</h3>
+        <p>These are the same as you'll find above when hovering the output marks. I felt it would be handy to have them in a simple list format. 🤷‍♀️</p>
+        <ul id="issues"></ul>
+        <h3>Complexity</h3>
+        <ul id="complexity">
+            <li><a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch%E2%80%93Kincaid_grade_level">Flesch–Kincaid Grade Level</a>: <span id="gradeLevel"></span></li>
+            <li><a href="https://en.wikipedia.org/wiki/Automated_readability_index">Automated Readability Index</a>: <span id="readability"></span></li>
+        </ul>
+    </div>
+
+    <script src="write-good.bundle.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

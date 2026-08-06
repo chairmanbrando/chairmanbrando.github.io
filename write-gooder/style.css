@@ -1,0 +1,64 @@
+body {
+    margin: 5rem auto;
+    padding: 0 20px;
+}
+
+h3 {
+    font-weight: bold;
+    margin-top: 2em;
+
+    span {
+        font-weight: normal;
+    }
+}
+
+div.center {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
+
+    h1, h2 {
+        text-align: center;
+    }
+
+}
+
+div.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+textarea,
+.output {
+    box-sizing: border-box;
+    color: var(--purple);
+    font-size: 16px;
+    height: 300px;
+    line-height: 1.6;
+    padding: 16px;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.output {
+    background: white;
+    overflow-y: auto;
+    white-space: pre-wrap; /* Keeps line breaks from input textarea. */
+}
+
+/* Styling the highlights */
+mark {
+    background-color: #fef08a;
+    border-bottom: 2px solid #eab308;
+    border-radius: 2px;
+    cursor: help;
+    padding: 0 2px;
+}
