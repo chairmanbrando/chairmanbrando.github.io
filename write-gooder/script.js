@@ -25,6 +25,7 @@ function createHighlights(text, suggestions) {
     if (! suggestions.length) return escapeHTML(text);
 
     suggestions.sort((a, b) => a.index - b.index);
+    issues.replaceChildren();
 
     // First, drop the suggestions into a list below.
     suggestions.forEach((sugg) => {
@@ -78,7 +79,7 @@ function calculateFleschKincaid(text) {
 const weakSauce = ['basically', 'even', 'of course', 'though'];
 
 function checkCustomWords(text) {
-    if (! text.trim()) return suggestions;
+    if (! text.trim()) return [];
 
     const suggestions = [];
     const pattern     = new RegExp(`\\b(${weakSauce.join('|')})\\b`, 'gi');
