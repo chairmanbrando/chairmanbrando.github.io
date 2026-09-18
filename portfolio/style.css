@@ -23,6 +23,10 @@ h1 {
     grid-template-columns: 1fr 1fr;
     margin-top: 2rem;
 
+    @media (max-width: 320px) {
+        grid-template-columns: 1fr;
+    }
+
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -64,7 +68,7 @@ h1 {
     border: 0;
     color: #fff;
     max-width: 50rem;
-    padding: 0;
+    padding: 0 10px;
     position: fixed;
 
     &:popover-open {
