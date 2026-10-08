@@ -1,0 +1,65 @@
+:root {
+  --bg: #1a0b2e; /* deep purple */
+  --panel: #2a1450; /* lighter purple for cards */
+  --edge: #4b2a85; /* purple for quiet borders */
+  --neon: #39ff14; /* neon green */
+  --text: #e6dcff; /* pale lavender for body text */
+  --px: 4px; /* one "pixel" for borders and shadows */
+
+  cursor: url('/dagger.svg') 0 0, auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: var(--bg);
+  background-image: /* faint pixel grid */
+    linear-gradient(var(--edge) 1px, transparent 1px),
+    linear-gradient(90deg, var(--edge) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  font-variant-ligatures: none;
+  line-height: 32px;
+  margin: 0;
+
+  &:has(.backdrop) {
+    overflow: hidden;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: normal;
+  line-height: 32px;
+  margin: 0;
+}
+
+a {
+  color: var(--neon);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button, a {
+  cursor: url('/dagger.svg') 0 0, pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
