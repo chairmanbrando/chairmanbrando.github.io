@@ -20,7 +20,6 @@ const copyContentsToClipboard = function (elem) {
     try {
         elem.select();
         navigator.clipboard.writeText(elem.value);
-
         return true;
     } catch (e) {
         return false;
@@ -28,7 +27,7 @@ const copyContentsToClipboard = function (elem) {
 }
 
 // Swiped: https://stackoverflow.com/a/37949642
-const replaceArray = function (string, finds, replaces) {
+const replaceArray = function (string, finds, replaces, onMatch = () => {}) {
     let i, regex = [], map = {};
 
     for (i = 0; i < finds.length; i++) {
@@ -37,7 +36,10 @@ const replaceArray = function (string, finds, replaces) {
     }
 
     regex = regex.join('|');
-    string = string.replace(new RegExp(regex, 'g'), (matched) => map[matched]);
+    string = string.replace(new RegExp(regex, 'g'), (matched) => {
+        onMatch();
+        return map[matched];
+    });
 
     return string;
 }
@@ -49,22 +51,28 @@ domReady(function () {
     const $out  = document.querySelector('#output');
     const $outc = document.querySelector('#output + .count');
 
+    let changes = 0;
+    const tally = () => changes++;
+
     $in.addEventListener('click', (e) => {
         e.target.select();
     });
 
     $in.addEventListener('input', (e) => {
         let fixme = e.target.value;
+        changes = 0;
 
-        fixme = fixme.replaceAll(/  +/g, ' ');
-        fixme = fixme.replaceAll(/\[\d{1,3}\]/g, '');
-        fixme = fixme.replaceAll(/\[[a-z]\]/g, '');
-        fixme = replaceArray(fixme, charz.find, charz.replace);
-        fixme = replaceArray(fixme, ligs.find, ligs.replace);
+        fixme = fixme.replaceAll(/  +/g, () => (tally(), ' '));
+        fixme = fixme.replaceAll(/\[\d{1,3}\]/g, () => (tally(), ''));
+        fixme = fixme.replaceAll(/\[[a-z]\]/g, () => (tally(), ''));
+        fixme = replaceArray(fixme, charz.find, charz.replace, tally);
+        fixme = replaceArray(fixme, ligs.find, ligs.replace, tally);
 
         if (fixme.indexOf('%') > -1) {
             try {
+                const escapes = fixme.match(/%[0-9a-f]{2}/gi) || [];
                 fixme = decodeURIComponent(fixme);
+                changes += escapes.length;
             } catch (e) {
                 console.log(e);
             }
@@ -90,7 +98,7 @@ domReady(function () {
     });
 
     $out.addEventListener('input', (e) => {
-        $outc.textContent = e.target.value.length;
+        $outc.textContent = `${e.target.value.length} (${changes})`;
     });
 
     document.querySelectorAll('.field .copied').forEach((e) => {
