@@ -16,20 +16,23 @@
             <h1>Get Clean YouTube Feed URLs</h1>
             <p><a href="https://chairmanbrando.org/post/187/remove-shorts-from-youtube-rss-feeds">Over on my dumb blog</a> I talked about how I found a way to get a feed URL that didn't include Shorts and streams as the default feed does. Doing it manually is fine and all, but if you have dozens or hundreds of channels in your RSS reader already, you'll want a way to construct these new feed URLs as quickly as possible. This page will hopefully help.</p>
             <form id="form" action="">
-                <p>We're looking for a YouTube channel URL or ID here:</p>
+                <p>We're looking for a YouTube video, channel URL, or channel ID here. All of these examples should work:</p>
                 <ul>
+                    <li>https://www.youtube.com/watch?v=dQw4w9WgXcQ</li>
+                    <li>https://youtu.be/dQw4w9WgXcQ</li>
                     <li>https://www.youtube.com/channel/UCNqlKAVi39GeSzAvRdXN7LQ</li>
-                    <li>https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA</li>
+                    <li>https://www.youtube.com/@YourMom</li>
                     <li>UCNqlKAVi39GeSzAvRdXN7LQ</li>
-                    <li>UCHnyfMqiRRG1u-2MsSQLbXA</li>
                 </ul>
-                <p>Username URLs (those with <code>@</code>) won't work until I connect this to the YouTube API (which I won't do).</p>
-                <input type="text" id="channel" placeholder="Channel URL or ID" pattern="(https:\/\/www\.youtube\.com\/channel\/)?(UC[A-Za-z0-9_\-].+)" required>
-                <input type="submit" value="Go">
+                <p>Channel IDs and <code>/channel/</code> URLs are converted instantly. Video and <code>@</code> handle URLs need a quick lookup on YouTube's end first.</p>
+                <input type="text" id="channel" placeholder="Video URL, channel URL, or ID" autocomplete="off" required>
+                <input type="submit" id="go" value="Go">
             </form>
+            <p id="status"></p>
         </section>
-        <section id="output" class="contain">
-            Clean RSS feed: <a href="">...</a>
+        <section id="output" class="contain" hidden>
+            <p>Clean RSS feed: <a href="" target="_blank" rel="noopener">...</a> <button type="button" id="copy">Copy</button></p>
+            <p>Also: <a id="all" target="_blank" rel="noopener">All uploads</a> &middot; <a id="shorts" target="_blank" rel="noopener">Shorts only</a> &middot; <a id="live" target="_blank" rel="noopener">Past streams</a></p>
         </section>
     </main>
     <script src="script.js"></script>

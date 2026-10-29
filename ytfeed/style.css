@@ -21,6 +21,14 @@ form {
     }
 }
 
+#status.err {
+    color: red;
+}
+
+#output a {
+    word-break: break-all;
+}
+
 img {
     display: block;
     margin: 1rem auto;
@@ -29,4 +37,8 @@ img {
 span.name {
     display: block;
     margin-bottom: -0.5rem;
+}
+
+code {
+    color: #adff2f;
 }
