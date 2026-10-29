@@ -14,6 +14,7 @@ h1 + h3 {
 form {
     input[type="text"] {
         min-width: 226px;
+        width: 46%;
 
         &:invalid:not(:placeholder-shown) {
             border: 1px solid red;
