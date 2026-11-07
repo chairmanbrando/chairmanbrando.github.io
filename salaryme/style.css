@@ -1,0 +1,193 @@
+#page {
+    justify-content: center;
+    padding: 4rem 0 3rem 0;
+}
+
+.contain {
+    width: 60em;
+}
+
+#output {
+    padding-top: 0;
+}
+
+h1 + p {
+    font-size: 14px;
+}
+
+form {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(17em, 1fr));
+
+    fieldset {
+        border: 1px dotted rgba(var(--white-rgb), 0.25);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 0;
+        padding: 0.75rem 1rem 1rem;
+    }
+
+    fieldset.wide {
+        display: grid;
+        gap: 0.75rem 1rem;
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+    }
+
+    legend {
+        color: var(--green);
+        padding: 0 0.5em;
+        text-transform: capitalize;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        gap: 0.25rem;
+        text-transform: capitalize;
+    }
+
+    input,
+    select {
+        font-family: Consolas, 'Fira Code', monospace;
+        font-size: 14px;
+        padding: 0.35em 0.5em;
+        width: 100%;
+    }
+
+    label small,
+    .radios small {
+        font-size: 11px;
+        line-height: 1.3;
+        opacity: 0.6;
+        order: 1;
+    }
+
+    .radios {
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        gap: 0.25rem;
+
+        div {
+            display: flex;
+            gap: 1.25rem;
+            padding: 0.35em 0;
+        }
+
+        label {
+            align-items: center;
+            flex-direction: row;
+            font-size: 14px;
+            gap: 0.4rem;
+        }
+
+        input {
+            width: auto;
+        }
+    }
+
+    input:invalid {
+        border: 1px solid red;
+    }
+}
+
+#summary {
+    font-size: 16px;
+
+    strong {
+        color: var(--green);
+    }
+
+    /* Raise/lower via offset instead of vertical-align so the line box doesn't grow. */
+    sub,
+    sup {
+        font-size: 0.75em;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    sup {
+        top: -0.45em;
+    }
+
+    sub {
+        top: 0.25em;
+    }
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+        border-bottom: 1px solid rgba(var(--white-rgb), 0.15);
+        padding: 0.4em 0.75em;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: left;
+        text-transform: capitalize;
+        white-space: normal;
+
+        small {
+            text-transform: none;
+        }
+    }
+
+    thead th {
+        border-bottom: 1px solid var(--lavender);
+        color: var(--lavender);
+    }
+
+    tr.neg td:not(:first-child) {
+        color: #ff9a9a;
+    }
+
+    tr.sub td,
+    tr.total td {
+        border-top: 1px solid rgba(var(--white-rgb), 0.5);
+        font-weight: bold;
+    }
+
+    tr.total td {
+        color: var(--green);
+    }
+
+    tr.loss td {
+        border-bottom: 0;
+        font-weight: bold;
+    }
+
+    tr.loss td:not(:first-child) {
+        color: #ff6b6b;
+    }
+
+    tr.info td {
+        opacity: 0.7;
+    }
+
+    small {
+        display: block;
+        font-weight: normal;
+        opacity: 0.6;
+    }
+}
+
+.note {
+    font-size: 11px;
+    margin-top: 3rem;
+    opacity: 0.7;
+}

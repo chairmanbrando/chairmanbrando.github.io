@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Do You Really Make? 🤔</title>
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <main id="page">
+        <section class="contain">
+            <h1>What Do You Really Make? 🤔</h1>
+            <p>Your salary is fibs! Enter what you're paid and this page will knock it down by taxes (federal plus VA
+            state (because that's where I am)), payroll deductions, and the cost of getting to work, including the time
+            you spend driving there, which is unpaid work in all but name. A standard 40-hour week (2,080 hours a year)
+            is assumed. This country isn't advanced enough for <a href="https://en.wikipedia.org/wiki/Four-day_workweek"
+            target="_blank">a 32-hour workweek</a>!</p>
+            <form id="form" action="">
+                <fieldset class="wide">
+                    <legend>Pay</legend>
+                    <div class="radios">
+                        <span>Pay type</span>
+                        <div>
+                            <label><input type="radio" name="type" id="typeYear" value="year" checked> Yearly</label>
+                            <label><input type="radio" name="type" id="typeHour" value="hour"> Hourly</label>
+                        </div>
+                    </div>
+                    <label><span id="amount-label">Yearly amount</span>
+                        <small id="amount-hint">$ per year</small>
+                        <input type="number" id="amount" min="0" step="any" value="60000" inputmode="decimal" required>
+                    </label>
+                    <label>Filing status
+                        <small>Joint assumes this is the household's only income</small>
+                        <select id="filing">
+                            <option value="single">Single</option>
+                            <option value="mfj">Married filing jointly</option>
+                            <option value="hoh">Head of household</option>
+                        </select>
+                    </label>
+                    <label>Paid days off per year
+                        <small>PTO + holidays</small>
+                        <input type="number" id="pto" min="0" max="260" step="1" value="20">
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Extra compensation</legend>
+                    <label>Yearly bonus
+                        <small>$, flat amount</small>
+                        <input type="number" id="bonus" min="0" step="any" value="0">
+                    </label>
+                    <label>Overtime hours per week
+                        <input type="number" id="otHours" min="0" step="any" value="0">
+                    </label>
+                    <label>Overtime multiplier
+                        <input type="number" id="otMult" min="1" step="any" value="1.5">
+                    </label>
+                    <label>401(k) match
+                        <small>% of your contribution</small>
+                        <input type="number" id="matchRate" min="0" step="any" value="50">
+                    </label>
+                    <label>Match limit
+                        <small>% of salary</small>
+                        <input type="number" id="matchCap" min="0" step="any" value="6">
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Deductions</legend>
+                    <label>401(k) / retirement
+                        <small>% of gross</small>
+                        <input type="number" id="k401" min="0" max="100" step="any" value="5">
+                    </label>
+                    <label>Health insurance premium
+                        <small>$ per month, pre-tax</small>
+                        <input type="number" id="health" min="0" step="any" value="150">
+                    </label>
+                    <label>Other post-tax deductions
+                        <small>$ per month</small>
+                        <input type="number" id="postTax" min="0" step="any" value="0">
+                    </label>
+                    <label>Lunch, coffee, etc.
+                        <small>$ per on-site day</small>
+                        <input type="number" id="lunch" min="0" step="any" value="0">
+                    </label>
+                    <label>Clothes, dues, tools, etc.
+                        <small>$ per year</small>
+                        <input type="number" id="misc" min="0" step="any" value="0">
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Commute</legend>
+                    <label>Days on-site per week
+                        <input type="number" id="days" min="0" max="5" step="any" value="5">
+                    </label>
+                    <label>Round-trip time
+                        <small>minutes</small>
+                        <input type="number" id="minutes" min="0" step="any" value="50">
+                    </label>
+                    <label>Round-trip distance
+                        <small>miles</small>
+                        <input type="number" id="miles" min="0" step="any" value="30">
+                    </label>
+                    <label>Vehicle MPG
+                        <input type="number" id="mpg" min="1" step="any" value="28">
+                    </label>
+                    <label>Gas price
+                        <small>$ per gallon</small>
+                        <input type="number" id="gas" min="0" step="any" value="3.30">
+                    </label>
+                    <label>Tolls + parking
+                        <small>$ per on-site day</small>
+                        <input type="number" id="tolls" min="0" step="any" value="0">
+                    </label>
+                    <label>Wear &amp; tear
+                        <small>$ per mile</small>
+                        <input type="number" id="wear" min="0" step="any" value="0.10">
+                    </label>
+                </fieldset>
+            </form>
+        </section>
+        <section id="output" class="contain">
+            <p id="summary"><span id="summary-main"></span> <span id="musk" hidden></span></p>
+            <div class="table-wrap">
+                <table id="results">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Yearly</th>
+                            <th>Monthly</th>
+                            <th>Biweekly</th>
+                            <th>Weekly</th>
+                            <th>Hourly</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <p class="note">Estimates only: 2026 federal brackets and standard deduction, 2026 Social Security wage
+            base, and Virginia's current brackets and standard deduction. Assumes this is your only income, no
+            itemizing, no credits, and no local income tax (Virginia has none). Health premiums are treated as pre-tax
+            (Section 125); 401(k) contributions reduce income tax but not FICA. "Hourly" columns divide by 2,080 paid
+            hours. The "actually net" hourly rate in the summary divides real take-home by paid hours (plus any
+            overtime) <em>plus</em> commuting hours. Overtime is assumed to be paid on all hours past 40 at your
+            multiplier, bonuses are taxed as ordinary income, and the 401(k) match is shown separately because it isn't
+            spendable cash.<span id="musk-note" hidden> Musk's net worth is Forbes' real-time estimate, as of
+            <span id="musk-date"></span>, via the <a href="https://github.com/komed3/rtb-api" target="_blank"
+            rel="noopener">rtb-api</a> project. It's only updated periodically, so it's approximate.</span></p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
