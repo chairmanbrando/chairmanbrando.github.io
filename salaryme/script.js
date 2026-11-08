@@ -81,7 +81,7 @@ function calc() {
     const afterTax = gross - k401 - health - postTax - fed - ss - medicare - va;
 
     const commuteDays = workdays * Math.min(num('days'), 5) / 5;
-    const miles = commuteDays * num('miles');
+    const miles = commuteDays * num('miles') * 2;
     const gasCost = miles / Math.max(num('mpg'), 1) * num('gas');
     const tollCost = commuteDays * num('tolls');
     const wearCost = miles * num('wear');
@@ -89,7 +89,7 @@ function calc() {
     const miscCost = num('misc');
 
     const real = afterTax - gasCost - tollCost - wearCost - lunchCost - miscCost;
-    const commuteHours = commuteDays * num('minutes') / 60;
+    const commuteHours = commuteDays * num('minutes') * 2 / 60;
 
     return {
         base, overtime, bonus, otHours, match, gross, k401, health, postTax, fed, ss, medicare, va, afterTax,

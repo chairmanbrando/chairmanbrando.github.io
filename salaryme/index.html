@@ -70,6 +70,36 @@
                 </fieldset>
 
                 <fieldset>
+                    <legend>Commute</legend>
+                    <label>Days on-site per week
+                        <input type="number" id="days" min="0" max="5" step="any" value="5">
+                    </label>
+                    <label>One-way time
+                        <small>minutes</small>
+                        <input type="number" id="minutes" min="0" step="any" value="25">
+                    </label>
+                    <label>One-way distance
+                        <small>miles</small>
+                        <input type="number" id="miles" min="0" step="any" value="15">
+                    </label>
+                    <label>Vehicle MPG
+                        <input type="number" id="mpg" min="1" step="any" value="28">
+                    </label>
+                    <label>Gas price
+                        <small>$ per gallon</small>
+                        <input type="number" id="gas" min="0" step="any" value="3.30">
+                    </label>
+                    <label>Tolls + parking
+                        <small>$ per on-site day</small>
+                        <input type="number" id="tolls" min="0" step="any" value="0">
+                    </label>
+                    <label>Wear &amp; tear
+                        <small>$ per mile</small>
+                        <input type="number" id="wear" min="0" step="any" value="0.10">
+                    </label>
+                </fieldset>
+
+                <fieldset>
                     <legend>Deductions</legend>
                     <label>401(k) / retirement
                         <small>% of gross</small>
@@ -90,36 +120,6 @@
                     <label>Clothes, dues, tools, etc.
                         <small>$ per year</small>
                         <input type="number" id="misc" min="0" step="any" value="0">
-                    </label>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Commute</legend>
-                    <label>Days on-site per week
-                        <input type="number" id="days" min="0" max="5" step="any" value="5">
-                    </label>
-                    <label>Round-trip time
-                        <small>minutes</small>
-                        <input type="number" id="minutes" min="0" step="any" value="50">
-                    </label>
-                    <label>Round-trip distance
-                        <small>miles</small>
-                        <input type="number" id="miles" min="0" step="any" value="30">
-                    </label>
-                    <label>Vehicle MPG
-                        <input type="number" id="mpg" min="1" step="any" value="28">
-                    </label>
-                    <label>Gas price
-                        <small>$ per gallon</small>
-                        <input type="number" id="gas" min="0" step="any" value="3.30">
-                    </label>
-                    <label>Tolls + parking
-                        <small>$ per on-site day</small>
-                        <input type="number" id="tolls" min="0" step="any" value="0">
-                    </label>
-                    <label>Wear &amp; tear
-                        <small>$ per mile</small>
-                        <input type="number" id="wear" min="0" step="any" value="0.10">
                     </label>
                 </fieldset>
             </form>
