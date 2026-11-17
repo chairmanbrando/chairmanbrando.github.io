@@ -1,9 +1,9 @@
 const charz = {
-    find:    ['©',      '®',     '™',       '‘',  '’',  '“', '”', '•',      '–', '—',  '…',   '·',        "\r\n", "\r", '\t',   '′',  '″'],
-    replace: ['&copy;', '&reg;', '&trade;', '\'', '\'', '"', '"', '&bull;', '-', '--', '...', '&middot;', "\n",   "\n", '    ', '\'', '"']
+    find:    ['©',      '®',     '™',       '‘',  '’',  '“', '”', '•',      '–', '—',  '⸺', '…',   '·',        "\r\n", "\r", '\t',   '′',  '″'],
+    replace: ['&copy;', '&reg;', '&trade;', '\'', '\'', '"', '"', '&bull;', '-', '--', '--',   '...', '&middot;', "\n",   "\n", '    ', '\'', '"']
 }
 
-// These are impossible to truly align due to lacking font support. 🙃
+// The ones above are more or less aligned with their replacements. These, however, are impossible to align due to lacking font support. 🙃
 const ligs = {
     find:    ['Ꜳ', 'ꜳ', 'Æ', 'æ', 'Ꜵ', 'ꜵ', 'Ꜷ', 'ꜷ', 'Ꜹ', 'ꜹ', 'Ꜻ', 'ꜻ', 'Ꜽ', 'ꜽ', '🙰', 'ﬀ', 'ﬃ', 'ﬄ', 'ﬁ', 'ﬂ', 'Ƕ', 'ƕ', '℔', 'Ỻ', 'ỻ', 'Œ', 'œ', 'Ꝏ', 'ꝏ', 'ꭢ', 'ẞ', 'ß', 'ﬆ', 'ﬅ', 'Ꜩ', 'ꜩ', 'ᵫ', 'ꭣ', 'Ꝡ', 'ꝡ', 'Ꟗ ꟗ', 'ꟕ', 'ꟓ'],
     replace: ['AA', 'aa', 'AE', 'ae', 'AO', 'ao', 'AU', 'au', 'AV', 'av', 'AV', 'av', 'AY', 'ay', 'et', 'f‌f', 'f‌f‌i', 'f‌f‌l', 'f‌i', 'f‌l', 'Hv', 'hv', 'lb', 'lL', 'll', 'OE', 'oe', 'OO', 'oo', 'ɔe', 'ſs', 'ſz', 'st', 'ſt', 'TZ', 'tz', 'ue', 'uo', 'VY', 'vy', 'ſs', 'ƿƿ', 'þþ',]
