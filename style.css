@@ -97,6 +97,13 @@ hr {
     opacity: 0.5;
 }
 
+abbr[title],
+dfn[title] {
+    cursor: help;
+    font-style: normal;
+    text-decoration: underline dotted;
+}
+
 .avatar {
     border-radius: 68px;
     box-shadow: var(--box-shadow);
