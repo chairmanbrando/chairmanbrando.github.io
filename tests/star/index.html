@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunken Star</title>
+<style>
+	html, body { height: 100%; margin: 0; }
+	body {
+		color: white;
+		font-family: Georgia, serif;
+		display: grid;
+		place-items: center;
+		background:
+			radial-gradient(ellipse at 50% 40%, #3a3f4a 0%, #1c1f26 70%, #121419 100%);
+	}
+	svg { width: min(760px, 96vw); height: auto; display: block; }
+</style>
+</head>
+<body>
+<p>Look, I don't like the Cowboys either, but I saw this design, more or less, on a dude's hoodie and wanted to see if it could be replicated.</p>
+<svg id="star" viewBox="0 0 760 740" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<!-- Thread shading: each thread reads as a little cylinder -->
+		<linearGradient id="hThread" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0"   stop-color="#1f2c52"/>
+			<stop offset="0.45" stop-color="#5470b4"/>
+			<stop offset="0.6" stop-color="#4862a3"/>
+			<stop offset="1"   stop-color="#1c2749"/>
+		</linearGradient>
+		<linearGradient id="vThread" x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0"   stop-color="#1a2443"/>
+			<stop offset="0.45" stop-color="#4560a0"/>
+			<stop offset="0.6" stop-color="#3b5491"/>
+			<stop offset="1"   stop-color="#18213e"/>
+		</linearGradient>
+
+		<!-- Plain weave tile: over/under alternating in a checker -->
+		<pattern id="weave" width="8" height="8" patternUnits="userSpaceOnUse">
+			<rect width="8" height="8" fill="#0f1528"/>
+			<rect x="0"   y="0.4" width="4"   height="3.2" fill="url(#hThread)"/>
+			<rect x="4.4" y="0"   width="3.2" height="4"   fill="url(#vThread)"/>
+			<rect x="0.4" y="4"   width="3.2" height="4"   fill="url(#vThread)"/>
+			<rect x="4"   y="4.4" width="4"   height="3.2" fill="url(#hThread)"/>
+		</pattern>
+
+		<!-- Make the weave feel like real cloth: wobbly threads + slub streaks -->
+		<filter id="fabric" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+			<!-- slight waviness in the threads -->
+			<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="warp"/>
+			<feDisplacementMap in="SourceGraphic" in2="warp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="woven"/>
+
+			<!-- horizontal slubs (weft) -->
+			<feTurbulence type="fractalNoise" baseFrequency="0.006 0.22" numOctaves="3" seed="11" result="nh"/>
+			<feColorMatrix in="nh" type="matrix" values="
+				0.33 0.33 0.33 0 0
+				0.33 0.33 0.33 0 0
+				0.33 0.33 0.33 0 0
+				0 0 0 0 1" result="slubH"/>
+			<!-- vertical slubs (warp) -->
+			<feTurbulence type="fractalNoise" baseFrequency="0.22 0.006" numOctaves="3" seed="23" result="nv"/>
+			<feColorMatrix in="nv" type="matrix" values="
+				0.33 0.33 0.33 0 0
+				0.33 0.33 0.33 0 0
+				0.33 0.33 0.33 0 0
+				0 0 0 0 1" result="slubV"/>
+			<!-- broad mottling, like dye variation -->
+			<feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" seed="5" result="nm"/>
+			<feColorMatrix in="nm" type="matrix" values="
+				0.33 0.33 0.33 0 0
+				0.33 0.33 0.33 0 0
+				0.33 0.33 0.33 0 0
+				0 0 0 0 1" result="mottle"/>
+
+			<feComposite in="woven" in2="slubH"  operator="arithmetic" k1="0" k2="1" k3="0.28" k4="-0.14" result="a"/>
+			<feComposite in="a"     in2="slubV"  operator="arithmetic" k1="0" k2="1" k3="0.22" k4="-0.11" result="b"/>
+			<feComposite in="b"     in2="mottle" operator="arithmetic" k1="0" k2="1" k3="0.3"  k4="-0.15"/>
+		</filter>
+
+		<!-- Inner shadow (light from top-left, so the top-left walls shade the floor) -->
+		<filter id="innerShadow" x="-10%" y="-10%" width="120%" height="120%">
+			<feOffset in="SourceAlpha" dx="10" dy="13"/>
+			<feGaussianBlur stdDeviation="9" result="shifted"/>
+			<feComposite in="SourceAlpha" in2="shifted" operator="out" result="rim"/>
+			<feFlood flood-color="#03050c" flood-opacity="0.85"/>
+			<feComposite in2="rim" operator="in"/>
+		</filter>
+
+		<!-- Tight contact shadow right at the edge -->
+		<filter id="edgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+			<feMorphology in="SourceAlpha" operator="erode" radius="2" result="shrunk"/>
+			<feGaussianBlur in="shrunk" stdDeviation="2.5" result="soft"/>
+			<feComposite in="SourceAlpha" in2="soft" operator="out" result="rim"/>
+			<feFlood flood-color="#000" flood-opacity="0.75"/>
+			<feComposite in2="rim" operator="in"/>
+		</filter>
+
+		<!-- Faint bounce light on the bottom-right inner walls -->
+		<filter id="innerGlow" x="-10%" y="-10%" width="120%" height="120%">
+			<feOffset in="SourceAlpha" dx="-5" dy="-6"/>
+			<feGaussianBlur stdDeviation="4" result="shifted"/>
+			<feComposite in="SourceAlpha" in2="shifted" operator="out" result="rim"/>
+			<feFlood flood-color="#dfe8ff" flood-opacity="0.22"/>
+			<feComposite in2="rim" operator="in"/>
+		</filter>
+
+		<!-- Darken toward the walls so the floor feels recessed -->
+		<radialGradient id="vignette" cx="50%" cy="54%" r="55%">
+			<stop offset="0%"   stop-color="#000" stop-opacity="0"/>
+			<stop offset="65%"  stop-color="#000" stop-opacity="0.12"/>
+			<stop offset="100%" stop-color="#000" stop-opacity="0.45"/>
+		</radialGradient>
+
+		<filter id="drop" x="-20%" y="-20%" width="140%" height="140%">
+			<feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity="0.55"/>
+		</filter>
+
+		<!-- Raised inner line: shadow falls down-right onto the sunken floor,
+				 matching the top-left light used for the walls -->
+		<filter id="lineShadow" x="-10%" y="-10%" width="120%" height="120%">
+			<feDropShadow dx="7" dy="9" stdDeviation="5" flood-color="#03050c" flood-opacity="0.75"/>
+		</filter>
+
+		<path id="starPath" d=""/>
+		<clipPath id="starClip"><use href="#starPath"/></clipPath>
+	</defs>
+
+	<!-- 20px white border: a 40px centered stroke, half hidden under the fill -->
+	<use href="#starPath" fill="#f4f4f1" stroke="#f4f4f1" stroke-width="40"
+			 stroke-linejoin="miter" stroke-miterlimit="10" filter="url(#drop)"/>
+
+	<!-- Sunken fabric interior -->
+	<g clip-path="url(#starClip)">
+		<g id="fabricMove">
+			<!-- live-filtered fallback; swapped for a pre-rendered bitmap by the script -->
+			<rect id="fabricLive" x="0" y="0" width="760" height="740" fill="url(#weave)" filter="url(#fabric)"/>
+			<image id="fabricImg" preserveAspectRatio="none" display="none"/>
+		</g>
+		<rect x="0" y="0" width="760" height="740" fill="url(#vignette)"/>
+	</g>
+	<use href="#starPath" filter="url(#innerShadow)"/>
+	<use href="#starPath" filter="url(#edgeShadow)"/>
+	<use href="#starPath" filter="url(#innerGlow)"/>
+
+	<!-- 10px inner line, inset 10px from the border (set in script).
+			 Drawn above the floor shadows so it sits at border height and
+			 casts its own shadow down onto the sunken fabric. -->
+	<!-- clipped to the star so the shadow can't spill onto the white border -->
+	<g clip-path="url(#starClip)">
+		<path id="innerLine" fill="none" stroke="#f4f4f1" stroke-width="10"
+					stroke-linejoin="miter" stroke-miterlimit="10" filter="url(#lineShadow)"/>
+	</g>
+</svg>
+
+<script>
+	// Sized so the star including its 20px border is ~700px wide.
+	const cx = 380, cy = 405;
+	const R  = 303;        // outer radius of the fabric star
+	const r  = R * 0.42;   // inner radius (a bit chunkier than the classic 0.382)
+
+	function starD(outer, inner) {
+		const pts = [];
+		for (let i = 0; i < 10; i++) {
+			const a = -Math.PI / 2 + i * Math.PI / 5;
+			const rad = i % 2 ? inner : outer;
+			pts.push((cx + rad * Math.cos(a)).toFixed(2) + ',' + (cy + rad * Math.sin(a)).toFixed(2));
+		}
+		return 'M' + pts.join('L') + 'Z';
+	}
+	document.getElementById('starPath').setAttribute('d', starD(R, r));
+
+	// Every edge of a regular star is the same distance h from the center, so an
+	// inward offset by d is just the star scaled by (h - d) / h.
+	const p0 = [0, -R];
+	const p1 = [r * Math.cos(-Math.PI / 2 + Math.PI / 5), r * Math.sin(-Math.PI / 2 + Math.PI / 5)];
+	const h = Math.abs(p0[0] * p1[1] - p0[1] * p1[0]) / Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+	const GAP = 10, LINE = 10;
+	const s = (h - GAP - LINE / 2) / h;  // centerline of the 10px line
+	document.getElementById('innerLine').setAttribute('d', starD(R * s, r * s));
+
+	// ---------------------------------------------------------------------
+	// Parallax fabric
+	//
+	// The fabric filter is expensive, so it's rendered ONCE to a bitmap
+	// (with a margin so there's room to slide), then only that bitmap moves.
+	// ---------------------------------------------------------------------
+	const VB_W = 760, VB_H = 740;
+	const MAX_SHIFT = 14;   // max movement in SVG units
+	const MARGIN = 28;      // extra fabric beyond the viewBox on every side (> MAX_SHIFT)
+	const EASE = 0.12;      // 0..1, how quickly it catches up to the cursor
+
+	const svg      = document.getElementById('star');
+	const live     = document.getElementById('fabricLive');
+	const img      = document.getElementById('fabricImg');
+	const mover    = document.getElementById('fabricMove');
+
+	async function bakeFabric() {
+		const w = VB_W + MARGIN * 2, h = VB_H + MARGIN * 2;
+		// Render at the on-screen resolution (capped) so the weave stays crisp.
+		const scale = Math.min(2, (window.devicePixelRatio || 1) * (svg.clientWidth / VB_W || 1));
+		const pw = Math.round(w * scale), ph = Math.round(h * scale);
+
+		const ser = new XMLSerializer();
+		const defs = ['hThread', 'vThread', 'weave', 'fabric']
+			.map(id => ser.serializeToString(document.getElementById(id))).join('');
+		const src =
+			`<svg xmlns="http://www.w3.org/2000/svg" width="${pw}" height="${ph}" ` +
+			`viewBox="${-MARGIN} ${-MARGIN} ${w} ${h}"><defs>${defs}</defs>` +
+			`<rect x="${-MARGIN}" y="${-MARGIN}" width="${w}" height="${h}" ` +
+			`fill="url(#weave)" filter="url(#fabric)"/></svg>`;
+
+		// An SVG used as an <image> is rasterized once and cached by the browser,
+		// so translating it is cheap. (No canvas step: that can be blocked as
+		// "tainted", especially when the page is opened from file://.)
+		const url = URL.createObjectURL(new Blob([src], { type: 'image/svg+xml' }));
+		const probe = new Image();
+		probe.src = url;
+		await probe.decode();   // make sure it actually renders before swapping
+
+		img.setAttribute('href', url);
+		img.setAttribute('x', -MARGIN);
+		img.setAttribute('y', -MARGIN);
+		img.setAttribute('width', w);
+		img.setAttribute('height', h);
+		img.removeAttribute('display');
+		live.remove();
+		console.info('Fabric baked to bitmap.');
+	}
+
+	function startParallax() {
+
+		let tx = 0, ty = 0;   // target
+		let x = 0, y = 0;     // current
+		let raf = 0;
+
+		function tick() {
+			x += (tx - x) * EASE;
+			y += (ty - y) * EASE;
+			if (Math.abs(tx - x) < 0.01 && Math.abs(ty - y) < 0.01) { x = tx; y = ty; raf = 0; }
+			else raf = requestAnimationFrame(tick);
+			mover.setAttribute('transform', `translate(${x.toFixed(2)} ${y.toFixed(2)})`);
+		}
+		const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+
+		window.addEventListener('pointermove', e => {
+			const b = svg.getBoundingClientRect();
+			const nx = (e.clientX - (b.left + b.width / 2)) / (window.innerWidth / 2);
+			const ny = (e.clientY - (b.top + b.height / 2)) / (window.innerHeight / 2);
+			const clamp = v => Math.max(-1, Math.min(1, v));
+			// Opposite to the cursor: the floor is further away than the borders.
+			tx = -clamp(nx) * MAX_SHIFT;
+			ty = -clamp(ny) * MAX_SHIFT;
+			kick();
+		});
+		document.documentElement.addEventListener('pointerleave', () => { tx = ty = 0; kick(); });
+	}
+
+	// Motion runs regardless; baking is just the performance optimization.
+	// If it fails, the live-filtered fabric moves instead (slower, but works).
+	startParallax();
+	bakeFabric().catch(err => console.warn('Fabric bake failed, using live filter:', err));
+</script>
+</body>
+</html>
